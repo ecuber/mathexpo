@@ -1,0 +1,128 @@
+{
+  "TvXwxo18": {
+    "metadata": {
+      "id": "TvXwxo18",
+      "title": "3D Support Vector"
+    },
+    "sortableTree": {
+      "8": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "14": [
+        "15"
+      ],
+      "root": [
+        "mainFolder",
+        "8",
+        "14"
+      ],
+      "mainFolder": [
+        "5",
+        "6",
+        "7",
+        "4"
+      ]
+    },
+    "folders": {
+      "8": {
+        "isCollapsed": true,
+        "description": "Blue Points"
+      },
+      "14": {
+        "description": "Separating Plane"
+      },
+      "cameraFolder": {
+        "isCollapsed": false
+      },
+      "mainFolder": {
+        "isCollapsed": true,
+        "description": "Orange Points"
+      }
+    },
+    "mathGraphics": {
+      "4": {
+        "type": "POINT",
+        "color": "#e74c3c",
+        "coords": "\\left[0.3,0.2,0.5\\right]"
+      },
+      "5": {
+        "type": "POINT",
+        "color": "#e74c3c",
+        "coords": "\\left[0.9,0.1,0.2\\right]"
+      },
+      "6": {
+        "type": "POINT",
+        "color": "#e74c3c",
+        "coords": "\\left[0.7,0.3,0.6\\right]"
+      },
+      "7": {
+        "type": "POINT",
+        "color": "#e74c3c",
+        "coords": "\\left[0.2,0.7,0.7\\right]"
+      },
+      "9": {
+        "type": "POINT",
+        "color": "#3498db",
+        "coords": "\\left[0.9,0.5,0.1\\right]"
+      },
+      "10": {
+        "type": "POINT",
+        "coords": "\\left[0.6,0.6,0.5\\right]"
+      },
+      "11": {
+        "type": "POINT",
+        "coords": "\\left[0.4,0.7,0.3\\right]"
+      },
+      "12": {
+        "type": "POINT",
+        "coords": "\\left[0.5,0.8,0.4\\right]"
+      },
+      "15": {
+        "type": "IMPLICIT_SURFACE",
+        "color": "#9b59b6",
+        "opacity": "0.5",
+        "shaded": false,
+        "rangeX": "\\left[0.1,\\ 1\\right]",
+        "rangeY": "\\left[-0.1,\\ 1\\right]",
+        "rangeZ": "\\left[-0.2,\\ 1\\right]",
+        "lhs": "_f(x,y,z)=2x+3y-z",
+        "rhs": "_f(x,y,z)=2.2"
+      },
+      "camera": {
+        "type": "CAMERA",
+        "relativePosition": [
+          -0.5290484504599833,
+          -3.023541156314816,
+          1.3810179820148296
+        ],
+        "relativeLookAt": [
+          0,
+          0,
+          0
+        ]
+      },
+      "axis-x": {
+        "type": "AXIS",
+        "min": "0",
+        "max": "1"
+      },
+      "axis-y": {
+        "type": "AXIS",
+        "min": "0",
+        "max": "1"
+      },
+      "axis-z": {
+        "type": "AXIS",
+        "min": "0",
+        "max": "1",
+        "scale": "0.75"
+      }
+    },
+    "sliderValues": {
+      "2": 4.283692482863561
+    }
+  }
+}
