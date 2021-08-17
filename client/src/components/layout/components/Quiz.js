@@ -46,13 +46,14 @@ const Quiz = props => {
         </Button>
       })}
     <Response style={{ visibility: selection === -1 ? 'hidden' : 'visible' }}>
-      {props.children.slice(midSlice)[selection !== -1 ? selection : 0]}
+      {props.children.slice(midSlice)[selection !== -1 ? selection : props.placeholder ?? 0]}
     </Response>
     </Center>
   </Box>
 }
 
 Quiz.propTypes = {
+  placeholder: PropTypes.number,
   children: PropTypes.node
 }
 

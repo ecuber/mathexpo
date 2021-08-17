@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import { Box, Button, Container, Flex, Heading, Image } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, Image, Center } from '@chakra-ui/react'
 import Header from './components/layout/components/Header'
 import { P, Subtitle, Float, Caption, Quiz, Emoji } from './components/layout'
-import { Optimize2D, TwoPixelFree } from './components/graphs'
+import { Optimize2D, Scatter2D, TwoPixel, Line2D } from './components/graphs'
 
 const ContainerBreakpoints = ['100%', 'container.lg']
 
 function App () {
   const [solution0, setSolution0] = useState(false)
+  const [showDiagonal, setShowDiagonal] = useState(false)
 
   return (
   <>
@@ -60,15 +61,22 @@ function App () {
           <Image mx='auto' w={{ base: '90%', lg: '50%' }} src='/assets/pedestrian.jpeg'/>
           <Caption>Pedestrian near a crosswalk</Caption>
         </Box>
-        <P>Computers can&apos;t really &quot;perceive&quot; images in the same way humans do. Rather than &quot;seeing&quot; areas of like-colors or otherwise &quot;consciously&quot; interpreting the picture, photographs taken by digital cameras are stored as rectangular arrays of color values.</P>
+        <P>Which most accurately describes how a computer would &quot;perceive&quot; this image?</P>
+        <Quiz placeholder={2}>
+          <>Through conscious experience like a human</>
+          <>Through brushstrokes like a painting</>
+          <>Through numbers representing colors in tiny squares</>
+          <><Emoji symbol='😅' label='laughing face'/> Computers don&apos;t have consciousness (as far as we know), so they don&apos;t really experience anything. <strong>Pictures taken by digital cameras are stored as a grid of color values.</strong></>
+          <><Emoji symbol='🤔' label='thinking face'/> Images are indeed sometimes stored using drawing instructions. These are called <em>vector graphics</em>. However, <strong>pictures taken by digital cameras are stored as a grid of color values.</strong></>
+          <><Emoji symbol='✅' label='green check mark'/> Yep. Pictures taken by digital cameras are stored as <strong>a grid of color values.</strong></>
+        </Quiz>
         <Float dir='right'>
           <Image mx='auto' src='/assets/zoom.gif'/>
           <Caption>Look at those pixels</Caption>
         </Float>
-        <br/>
-        <br/>
         <P>You probably don&apos;t notice it when the photo is zoomed out, but let&apos;s take a closer look at the little squares that comprise the image. We&apos;ll zoom in on the corner of the crosswalk stripe.</P>
         <P>Internally, each little square (or pixel) is stored as a number (specifically, a number between 0 and 16777215) and the computer knows how present that number as a color on your monitor.</P>
+        <P>This particular image is 800 pixels wide by 600 pixels tall, for a total of 480,000 pixels.</P>
         <br/>
 
         {/** Predictions */}
@@ -77,22 +85,23 @@ function App () {
         <P>There are endless ways to manipulate the grid of numbers that represents the image in order to get out that 0 or 1, but let&apos;s try this: look at <strong>a single, specific pixel somewhere in the image,</strong> and if its value is bigger than, say, 8388608, give an output of 1. If it&apos;s smaller, give an output of 0.</P>
         <Float dir='right'>
           <Image src='/assets/highlighted.png'/>
+          <Caption>This is the pixel in question!</Caption>
         </Float>
         <P>Suppose the pixel we are checking is the one here, highlighted in blue, and that its numerical value is 4313. Based on the rule we defined, we would return a...</P>
 
         <Quiz>
           <>0, for no pedestrian <Emoji>🚷</Emoji></>
           <>1, for pedestrian <Emoji>🚶</Emoji></>
-          <><Emoji>✅</Emoji> Exactly, the number is smaller than 8388608, so our rule says we should give 0 as an output.</>
-          <><Emoji>🤔</Emoji> Well, the number is smaller than 8388608, so our rule says we should give 0 as output.</>
+          <><Emoji symbol='✅' label='green check mark'/> Exactly, the number is smaller than 8388608, so our rule says we should give 0 as an output.</>
+          <><Emoji symbol='🤔' label='thinking face'/> Well, the number is smaller than 8388608, so our rule says we should give 0 as output.</>
         </Quiz>
 
         <P>Great! Now I&apos;m wondering, what do you think about this rule? Is it practical for the task we&apos;re trying to accomplish?</P>
         <Quiz>
           <>It seems overly simplistic to a somewhat ridiculous extent</>
           <>I think it would work</>
-          <><Emoji>✅</Emoji> Agreed. You definitely need to account for more than one pixel to do this task effectively.</>
-          <><Emoji>🤔</Emoji> It turns out you&apos;re going to need to account for more than one pixel in order to do this task effectively.</>
+          <><Emoji symbol='✅' label='green check mark'/> Agreed. You definitely need to account for more than one pixel to do this task effectively.</>
+          <><Emoji symbol='🤔' label='thinking face'/> It turns out you&apos;re going to need to account for more than one pixel in order to do this task effectively.</>
         </Quiz>
 
       </Box>
@@ -105,9 +114,9 @@ function App () {
         <>plane</>
         <>line</>
         <>circle</>
-        <><Emoji>✅</Emoji> Right! We can think of each of the numbers as the distance to one axis.</>
-        <><Emoji>🤔</Emoji> Typically a <em>single number</em> would be represented as a point on a number line.</>
-        <><Emoji>🤔</Emoji> We can represent a point on a circle with a <em>single number</em>, namely how far around we have to rotate to get the point.</>
+        <><Emoji symbol='✅' label='green check mark'/> Right! We can think of each of the numbers as the distance to one axis.</>
+        <><Emoji symbol='🤔' label='thinking face'/> Typically a <em>single number</em> would be represented as a point on a number line.</>
+        <><Emoji symbol='🤔' label='thinking face'/> We can represent a point on a circle with a <em>single number</em>, namely how far around we have to rotate to get the point.</>
       </Quiz>
 
       <Box>
@@ -119,14 +128,32 @@ function App () {
         <P>Because this geometric connection between pixel colors and points in the plane is so important to the story, let&apos;s make it really tangible. You can control the colors of the two pixels in this mathlet by dragging the point around in the square on the right.</P>
         <br/>
         <Float dir='right'>
-          <TwoPixelFree/>
+          <TwoPixel diagonal={showDiagonal}/>
+          <Center><Button size='md' mt={1} mb={0} onClick={() => setShowDiagonal(!showDiagonal)}>{showDiagonal ? 'Hide Diagonal' : 'Show Diagonal'}</Button></Center>
         </Float>
         <P>For convenience, we&apos;re showing plotting the pixel-representing numbers on a scale from 0 to 1, rather than from 0 to 16777215.</P>
-        <P>Notice that we can move the point in a direction parallel to one of the axes, we can keep one color constant. For example, if we move the point horizontally, its second coordinate (which dictates the color of the second pixel) stays the same, while the first coordinate changes, changing the color of the first pixel.</P>
-        <P>Notice also that the points along the diagonal (the line connecting the points (0, 0) and (1, 1)) have the property that the two pixel colors are the same.</P>
-        <P></P>
+        <P>Notice that if we move the point in a direction parallel to one of the axes, we can keep one color constant. For example, <strong>if we move the point horizontally,</strong> its second coordinate stays the same, while the first coordinate changes, changing the color of the first pixel.</P>
+        <P>Notice also that the points along the diagonal (the line that connects (0, 0) and (1, 1)) have the property that the two pixel colors are the same.</P>
+        <P>Now, the cool thing about looking at two pixels instead of one is that it gives us a lot more information to work with to try to separate out pedestrian-containing images from non-pedestrian-containing images. Let&apos;s see how we do that!</P>
       </Box>
-      {/**  */}
+
+      {/** Learning from Data */}
+      <Box>
+        <Heading>Learning from Data</Heading>
+        <Float dir='right'>
+          <Scatter2D/>
+        </Float>
+        <P>Suppose you collect four images with pedestrians and four images without pedestrians. You look at two specific pixel color values and plot them in a square on a plane (per the scheme above), coloring them teal (pedestrian) and tomato (no pedestrian) so you can tell them apart.</P>
+        <P>These eight points (which, remember, come from a pair of pixels from each of the images) are called <strong>training data.</strong> We&apos;re going to use them to try to figure out what to do to tell whether a given image has a pedestrian in it.</P>
+        <P>This brings us to a key conceptual point about how machine learning is different from other kinds of computational tasks: in machine learning, <strong>the system looks at real data to figure out what to do.</strong></P>
+        <P>In other words, we&apos;re acknowledging up front that we aren&apos;t going to be able to work out from scratch what the computer needs to do with those 480,000 numbers to give us a correct 0 or 1 response. Instead, <strong>we&apos;ll hand the computer lots of images and see if it can find patterns in the data</strong> that it can use to reliably discern which images have pedestrians in them.</P>
+
+        <Heading as='h3' size='lg'>Separating Lines</Heading>
+        <P>Alright, now back to our 8 training points. When you first saw those points, your visual cortex probably couldn&apos;t resist mentally separating the two groups using a line. Drag the two points on the dark blue line such that all of the teal points are on one side and all of the orange-colored points are on the other side.</P>
+        <Box m='auto' w={{ base: '80%', md: '50%' }}>
+          <Line2D/>
+        </Box>
+      </Box>
     </Container>
   </>
   )

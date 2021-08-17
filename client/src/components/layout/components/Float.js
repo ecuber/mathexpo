@@ -19,6 +19,7 @@ const Float = props => (
     lg: 5
   }}
   mb={3}
+  {...props}
   >
     {props.children}
   </Box>
