@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Button, Box, Flex, Center } from '@chakra-ui/react'
+import { Button, Box, Center } from '@chakra-ui/react'
 
 const Response = styled.p`
   margin-top: 1rem;
   font-family: Ubuntu Mono, monospace;
   font-size: 1.25rem;
   background: #F4F4F4;
-  padding: 0.4rem;
+  padding: 0.6rem;
   border-radius: 8px;
+  margin-bottom: 2rem;
 `
 
 const Quiz = props => {
@@ -53,9 +54,7 @@ const Quiz = props => {
 }
 
 Quiz.propTypes = {
-  children: PropTypes.node,
-  responses: PropTypes.arrayOf(PropTypes.string),
-  answer: PropTypes.number
+  children: PropTypes.node
 }
 
 export default Quiz
