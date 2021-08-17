@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes, { string } from 'prop-types'
-import { Container, Heading } from '@chakra-ui/react'
+import { chakra, Container, Heading } from '@chakra-ui/react'
 import styled from 'styled-components'
 
 const rest = {
@@ -16,8 +16,7 @@ const rest = {
   }
 }
 
-const Header = styled.header`
-  min-width: 100%;
+const Gradient = styled.div`
   margin: 0 0 3em 0;
   background-color: #6B72EB;
   background: rgb(21,0,36);
@@ -25,18 +24,16 @@ const Header = styled.header`
   background: -webkit-linear-gradient(35deg, rgba(21,0,36,1) 0%, rgba(64,9,121,1) 42%, rgba(0,136,255,1) 100%);
   background: linear-gradient(35deg, rgba(21,0,36,1) 0%, rgba(64,9,121,1) 42%, rgba(0,136,255,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#150024",endColorstr="#0088ff",GradientType=1);
-  box-shadow: 2px 8px 104px 20px rgba(0,0,0,0.23);
-  -webkit-box-shadow: 2px 8px 104px 20px rgba(0,0,0,0.23);
-  -moz-box-shadow: 2px 8px 104px 20px rgba(0,0,0,0.23);
-
 `
 
 const HeaderComposite = (props) => {
-  return <Header>
-    <Container maxW={props.breakpoints} {...rest.Container}>
-      <Heading as='h1' {...rest.Heading}>beautiful data science</Heading>
-    </Container>
-  </Header>
+  return <chakra.header shadow='2xl' minW='100%'>
+    <Gradient>
+      <Container maxW={props.breakpoints} {...rest.Container}>
+        <Heading as='h1' {...rest.Heading}>beautiful data science</Heading>
+      </Container>
+    </Gradient>
+  </chakra.header>
 }
 
 HeaderComposite.propTypes = {

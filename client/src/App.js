@@ -62,12 +62,12 @@ function App () {
         </Box>
         <P>Computers can&apos;t really &quot;perceive&quot; images in the same way humans do. Rather than &quot;seeing&quot; areas of like-colors or otherwise &quot;consciously&quot; interpreting the picture, photographs taken by digital cameras are stored as rectangular arrays of color values.</P>
         <Float dir='right'>
-          <Image src='/assets/zoom.gif'/>
+          <Image mx='auto' src='/assets/zoom.gif'/>
           <Caption>Look at those pixels</Caption>
         </Float>
         <br/>
         <br/>
-        <P>You probably don&apos;t notice it when the photo is zoomed out, but let&apos;s take a closer look at the little squares that comprise the image. We&apos;ll zoom in on the corner of the crosswalk stripe:</P>
+        <P>You probably don&apos;t notice it when the photo is zoomed out, but let&apos;s take a closer look at the little squares that comprise the image. We&apos;ll zoom in on the corner of the crosswalk stripe.</P>
         <P>Internally, each little square (or pixel) is stored as a number (specifically, a number between 0 and 16777215) and the computer knows how present that number as a color on your monitor.</P>
         <br/>
 
