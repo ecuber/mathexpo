@@ -57,12 +57,13 @@ function App () {
         <Heading>Image Data</Heading>
         <P>Suppose you want a computer to accomplish a complex task, such as recognizing a pedestrian in a self-driving car&apos;s camera feed.</P>
         <Box w='100%' mb={5}>
-          <Image mx='auto' w={{ base: '80%', lg: '50%' }} src='/assets/pedestrian.jpeg'/>
+          <Image mx='auto' w={{ base: '90%', lg: '50%' }} src='/assets/pedestrian.jpeg'/>
           <Caption>Pedestrian near a crosswalk</Caption>
         </Box>
         <P>Computers can&apos;t really &quot;perceive&quot; images in the same way humans do. Rather than &quot;seeing&quot; areas of like-colors or otherwise &quot;consciously&quot; interpreting the picture, photographs taken by digital cameras are stored as rectangular arrays of color values.</P>
         <Float dir='right'>
           <Image src='/assets/zoom.gif'/>
+          <Caption>Look at those pixels</Caption>
         </Float>
         <br/>
         <br/>
@@ -80,10 +81,8 @@ function App () {
         <P>Suppose the pixel we are checking is the one here, highlighted in blue, and that its numerical value is 4313. Based on the rule we defined, we would return a...</P>
 
         <Quiz>
-          {/** Quiz options */}
           <>0, for no pedestrian <Emoji>🚷</Emoji></>
           <>1, for pedestrian <Emoji>🚶</Emoji></>
-          {/** Responses (each one maps to an option) */}
           <><Emoji>✅</Emoji> Exactly, the number is smaller than 8388608, so our rule says we should give 0 as an output.</>
           <><Emoji>🤔</Emoji> Well, the number is smaller than 8388608, so our rule says we should give 0 as output.</>
         </Quiz>

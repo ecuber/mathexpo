@@ -21,16 +21,15 @@ const Quiz = props => {
       {props.children.slice(0, midSlice).map((option, i) => {
         return <Button
           key={i}
-          py={2}
           px={3}
+          py={2}
+          m={1.5}
+          overflow='auto'
+          height='max-content'
           color={selection === i ? 'white' : 'black'}
           display='inline-block'
-          m={1.5}
-          size='lg'
           fontSize='1.1rem'
-          width='min-content'
-          wordBreak='break-word'
-          // borderRadius='3xl'
+          whiteSpace='break-spaces'
           shadow='lg'
           _hover={{
             backgroundColor: selection === i ? '#606275' : '#E4E9ED'
