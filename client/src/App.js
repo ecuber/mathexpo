@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Box, Button, Container, Flex, Heading, Image, Center, Tooltip } from '@chakra-ui/react'
 import Header from './components/layout/components/Header'
 import { P, Subtitle, Float, Caption, Quiz, Emoji } from './components/layout'
-import { Optimize2D, Scatter2D, TwoPixel, Line2D, Slab } from './components/graphs'
+import { Optimize2D, Scatter2D, TwoPixel, Line2D, Slab, ScatterNN, Semi } from './components/graphs'
 import InfoBlock from './components/layout/components/InfoBlock'
 import Graph3D from './components/Graph3D'
 import graphs from './content/graphs.json'
@@ -186,6 +186,7 @@ function App () {
         <P>But that&apos;s because it&apos;s only looking at two pixels. If we look at three pixel values, we&apos;d get points in three-dimensional space, and those points could be separated with— you guessed it— a three-dimensional plane!</P>
       </Box>
 
+      {/** Support Vector Machines in Higher Dimensions */}
       <Box>
         <Heading as='h3' size='lg'>Support Vector Machines in Higher Dimensions</Heading>
         <P>Here&apos;s an example of a plane in three-dimensional space that separates four teal points from our orange-colored points (you can drag to rotate it around and see what&apos;s going on):</P>
@@ -217,7 +218,50 @@ function App () {
         </Quiz>
         <P>Moving from three dimensions to four (that is, considering four pixels instead of three), we can say that we&apos;re looking for an equation like: </P>
         <Center mb='4' style={{ fontSize: '1.5rem' }}><Eq>−w+3x−2y+4.5z=1</Eq></Center>
-        <P></P>
+        <P>where the left-hand side is smaller for each point <Eq>(w,\space x,\space y,\space z)</Eq> that corresponds to a pedestrian-containing image, and where the left-hand side is greater for the rest of the images.</P>
+        <P>Of course, for the practical problem, four pixels is not really all that much better than 1. But the key thing now is that we&apos;re no long limited in how many pixels we can consider.</P>
+        <P>What we&apos;re really looking for is <em>480,000</em> numbers that we can multiply in pairs with the actual 480,000 pixel values and add, yielding larger values for pedestrian-containing images and smaller values for the others.</P>
+      </Box>
+
+      {/** Numerical Optimization */}
+      <Box>
+        <Heading as='h3' size='lg'>Numerical Optimization</Heading>
+        <P>While this might seem like a tall order, it turns out that this is something that computers are great at. There are general-purpose packages that you feed this problem into and get an answer back efficiently.</P>
+        <P>Roughly speaking, the way this works is that the computer starts with <strong>480,000 random values</strong> (playing the role of the four numbers <Eq>[-1,\space 3,-2,\space 4.5]</Eq> in the expression <Eq>-w + 3x - 2y + 4.5z</Eq>), and it check how well they manage to separate the training data. It will almost certainly be terrible.</P>
+        <P>But then the computer will propose small nudges each of those values it started with. It can say for each little nudge whether it would separate points <em>slightly better</em> than before, or slightly worse. Then it moves all 480,000 values in whichever direction made things a little better.</P>
+        <P>It can apply this process repeatedly to achieve slightly better separation on each step. Eventually, we&apos;ll arrive at values which separate the training data about as well as possible.</P>
+      </Box>
+
+      {/** Neural Networks */}
+      <Box>
+        <P>While support vector machines work a lot better than nothing on image recognition tasks like identifying pedestrians, they&apos;re not good enough for real self-driving vehicle technology.</P>
+        <P>To think about why this is the case, imagine a slightly different dataset. </P>
+        <Float dir='right'>
+          <ScatterNN/>
+        </Float>
+        <P>These points...</P>
+        <Quiz>
+          <>can&apos;t be separated by a line</>
+          <>don&apos;t seem to show any patterns at all</>
+          <><Emoji symbol='✅' label='green check mark'/> Exactly. There is no separating line. However, the teal ones do seem to be in the middle and the tomato ones near the edges.</>
+          <><Emoji symbol='🤔' label='thinking face'/> Well, the teal ones do seem to be in the middle and the tomato ones near the edges.</>
+        </Quiz>
+        <P>We should be able to separate these points, just <em>not with a line.</em> We would want to use a <em>curve</em> instead, perhaps one which encircles the teal points in the middle.</P>
+        <P>It shouldn&apos;t be surprising that this kind of situation comes up in practice a lot, because there&apos;s nothing all that special about lines and planes. It could very well happen that the data from each class (pedestrian/non-pedestrian) tend to show up in particular regions in the space of images, but that those regions happen to be entangled from the point of a view of a separating line/plane.</P>
+        <P>If we&apos;re going to overcome the &quot;flatness&quot; limitation of lines and planes, we&apos;ll need the ability to <em>morph</em> or <em>fold</em> space somehow.</P>
+        <P>Being able to use these two lines in tandem gives us a lot more flexibility.</P>
+        <P>The mathematical term for the idea we&apos;re leveraging here is <strong>composition.</strong> In other words, we take two actions in sequence: first we reflect all the points based on the location of the gray line, and then we figure out which side of the blue line each resulting point is on.</P>
+        <P>We call these sequential actions <strong>layers</strong>. For example, we&apos;d say that the reflection in the mathlet above is the first layer, and the separating line is the second layer.</P>
+        <P>Furthermore, there&apos;s no reason to stop at two layers! We could, for example, fold across one line, then fold across a second line, and then separate the points with a third line.</P>
+        <P>Another cool thing about this is that the training procedure is not complicated by the extra layers. We can still wiggle each line a little bit and ask whether it makes the final results slightly better or worse. Then we update everything at once (each line moving according to how it, individually, affected the final outcome) and repeat.</P>
+        <P>This generalization of the support vector machine, which allows a sequence of space-morphing actions prior to separating the points, is called a <strong>neural network.</strong></P>
+        <P>One popular space-morphing action is <em>to make the coordinate axes sticky.</em> This might seem strange, but actually it tends to work quite well.</P>
+        <Float dir='right'>
+          <Semi />
+        </Float>
+        <P>Consider the following problem, where we&apos;re trying to classify every point inside the semicircle as yellow, and every point outside as purple. </P>
+        <P>To accomplish this feat, we&apos;re allowed to <em>linearly</em> transform the points however we want (rotate/scale/translate/etc). You can move the green and blue vectors to control this transformation. Then any points which happened to cross a coordinate axis get snapped back to it. Lastly, we try to separate the points using the line (which you can rotate using the tomtato handle or translate by grabbing it anywhere else).</P>
+        {/* <Graph3D dehydrated={graphs.volumemin} dev/> */}
       </Box>
     </Container>
   </>

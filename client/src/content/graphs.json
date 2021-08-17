@@ -127,5 +127,31 @@
     "sliderValues": {
       "2": 4.283692482863561
     }
+  },
+  "volumemin": {
+    "metadata": {
+      "id": "volumemin"
+    },
+    "sortableTree": {
+      "root": [
+        "mainFolder"
+      ],
+      "mainFolder": []
+    },
+    "mathGraphics": {
+      "camera": {
+        "type": "CAMERA",
+        "relativePosition": [
+          0.4999999999999996,
+          -1.9999999999999984,
+          0.49999999999999933
+        ],
+        "relativeLookAt": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
   }
 }
