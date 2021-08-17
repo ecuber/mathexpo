@@ -1,17 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import { Button, Box, Center } from '@chakra-ui/react'
-
-const Response = styled.p`
-  margin-top: 1rem;
-  font-family: Ubuntu Mono, monospace;
-  font-size: 1.25rem;
-  background: #F4F4F4;
-  padding: 0.6rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-`
+import InfoBlock from './InfoBlock'
 
 const Quiz = props => {
   const [selection, setSelection] = useState(-1)
@@ -45,9 +35,9 @@ const Quiz = props => {
             {option}
         </Button>
       })}
-    <Response style={{ visibility: selection === -1 ? 'hidden' : 'visible' }}>
+    <InfoBlock style={{ visibility: selection === -1 ? 'hidden' : 'visible' }}>
       {props.children.slice(midSlice)[selection !== -1 ? selection : props.placeholder ?? 0]}
-    </Response>
+    </InfoBlock>
     </Center>
   </Box>
 }

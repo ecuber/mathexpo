@@ -1,14 +1,20 @@
 import React, { useState } from 'react'
-import { Box, Button, Container, Flex, Heading, Image, Center } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, Image, Center, Tooltip } from '@chakra-ui/react'
 import Header from './components/layout/components/Header'
 import { P, Subtitle, Float, Caption, Quiz, Emoji } from './components/layout'
-import { Optimize2D, Scatter2D, TwoPixel, Line2D } from './components/graphs'
+import { Optimize2D, Scatter2D, TwoPixel, Line2D, Slab } from './components/graphs'
+import InfoBlock from './components/layout/components/InfoBlock'
+import Graph3D from './components/Graph3D'
+import graphs from './content/graphs.json'
+import { StaticMathField as Eq } from 'react-mathquill'
 
 const ContainerBreakpoints = ['100%', 'container.lg']
 
 function App () {
   const [solution0, setSolution0] = useState(false)
   const [showDiagonal, setShowDiagonal] = useState(false)
+  const [solution1, setSolution1] = useState(false)
+  const [solution2, setSolution2] = useState(false)
 
   return (
   <>
@@ -22,7 +28,7 @@ function App () {
       </Box>
       <Box>
         <Float dir='right'>
-          <Image mb={{ base: '5', md: 0 }} src='/assets/terminator.png'/>
+          <Image mb={{ base: '5', md: 0 }} src='/assets/terminator.jpg'/>
         </Float>
         <P>For most, the words &quot;artificial intelligence&quot; and evoke images of the Terminator and robot armies taking over the world. While we haven&apos;t reached that point (yet), <strong>machine learning</strong>, a subset of modern AI, has become ubiquitous in the tech industry and data science field.</P>
         <P>Pop culture and media tend to depict machine learning (generally abbreviated as ML) as a mystical branch of computer science that only the most talented programmers and mathematicians are capable of comprehending. While that may have been true decades ago, the barrier to entry in 2021 has fallen dramatically. </P>
@@ -123,7 +129,7 @@ function App () {
         <P>Here&apos;s a <strong>single point</strong> on a <strong>number line:</strong></P>
         <Image w={{ base: '90%', md: '70%' }} m='auto' src='/assets/line.svg'/>
         <P style={{ marginTop: '2rem', width: '95%' }}>And here is a <strong>pair of numbers</strong> on a <strong>plane.</strong> We call the values 2 and 3 the coordinates of the point <strong>(2, 3).</strong></P>
-        <Image w={{ base: '80%', md: '50%' }} m='auto' mb='10' src='/assets/plane.svg'/>
+        <Image w={{ base: '90%', sm: '70%', md: '50%' }} m='auto' mb='10' src='/assets/plane.svg'/>
 
         <P>Because this geometric connection between pixel colors and points in the plane is so important to the story, let&apos;s make it really tangible. You can control the colors of the two pixels in this mathlet by dragging the point around in the square on the right.</P>
         <br/>
@@ -143,16 +149,75 @@ function App () {
         <Float dir='right'>
           <Scatter2D/>
         </Float>
-        <P>Suppose you collect four images with pedestrians and four images without pedestrians. You look at two specific pixel color values and plot them in a square on a plane (per the scheme above), coloring them teal (pedestrian) and tomato (no pedestrian) so you can tell them apart.</P>
+        <P>Suppose you collect four images with pedestrians and four images without pedestrians. You look at two specific pixel color values and plot them in a square on a plane (per the scheme above), coloring them teal (pedestrian) and orange (no pedestrian) so you can tell them apart.</P>
         <P>These eight points (which, remember, come from a pair of pixels from each of the images) are called <strong>training data.</strong> We&apos;re going to use them to try to figure out what to do to tell whether a given image has a pedestrian in it.</P>
         <P>This brings us to a key conceptual point about how machine learning is different from other kinds of computational tasks: in machine learning, <strong>the system looks at real data to figure out what to do.</strong></P>
         <P>In other words, we&apos;re acknowledging up front that we aren&apos;t going to be able to work out from scratch what the computer needs to do with those 480,000 numbers to give us a correct 0 or 1 response. Instead, <strong>we&apos;ll hand the computer lots of images and see if it can find patterns in the data</strong> that it can use to reliably discern which images have pedestrians in them.</P>
 
         <Heading as='h3' size='lg'>Separating Lines</Heading>
         <P>Alright, now back to our 8 training points. When you first saw those points, your visual cortex probably couldn&apos;t resist mentally separating the two groups using a line. Drag the two points on the dark blue line such that all of the teal points are on one side and all of the orange-colored points are on the other side.</P>
-        <Box m='auto' w={{ base: '80%', md: '50%' }}>
-          <Line2D/>
+        <Box m='auto' w={{ base: '90%', sm: '70%', md: '50%' }}>
+          <Line2D solution={solution1}/>
         </Box>
+        <Flex dir='row' justifyContent='center' my={8}>
+            <Button shadow='lg' size='lg' fontSize='xl' m={{ base: '0 auto', md: '0 2 0 0' }} onClick={() => setSolution1(!solution1)}>
+              {!solution1
+                ? 'Show a possible solution'
+                : 'Restore default setup'
+            }
+            </Button>
+          </Flex>
+        <P>As you may have noticed, there are many lines that would separate the points correctly based on these criteria; we might as well pick a good one! Consider this question: what would be a good way of determining which separating line is &quot;better&quot; than the others?</P>
+        <P>Here&apos;s an idea: let&apos;s thicken the line into a slab, and look for the thickest slab that still separates the points. This should be a bit more accurate for points closer to the line!</P>
+        <InfoBlock><Emoji symbol='💡' label='lightbulb'/> <strong>Helpful Tip:</strong> In this mathlet, drag the arrow around to shift the whole slab, and drag the points to make it thicker, thinner, or to rotate the slab.</InfoBlock>
+        <Box m='auto' w={{ base: '90%', sm: '70%', md: '50%' }}>
+          <Slab solution={solution2}/>
+        </Box>
+        <Flex dir='row' justifyContent='center' my={8}>
+          <Button shadow='lg' size='lg' fontSize='xl' m={{ base: '0 auto', md: '0 2 0 0' }} onClick={() => setSolution2(!solution2)}>
+            {!solution2
+              ? 'Show best solution'
+              : 'Restore default setup'
+            }
+          </Button>
+        </Flex>
+        <P>The thing we just did—finding the thickest slab which separates two classes of points—is actually one of the most commonly used machine learning models! <strong>It&apos;s called a <u><Tooltip _hover={{ cursor: 'auto pointer' }} hasArrow label='Regarding the name, support vector is a term used to describe points on the edge of the slab, like the two orange-colored points and one teal point in the example above.'>support vector machine</Tooltip></u>.</strong></P>
+        <P>You might be guessing that this particular support vector machine, which looks at only two pixels, isn&apos;t very useful if we have 480,000 pixels in our whole image that are available to make predictions. You&apos;d be right.</P>
+        <P>But that&apos;s because it&apos;s only looking at two pixels. If we look at three pixel values, we&apos;d get points in three-dimensional space, and those points could be separated with— you guessed it— a three-dimensional plane!</P>
+      </Box>
+
+      <Box>
+        <Heading as='h3' size='lg'>Support Vector Machines in Higher Dimensions</Heading>
+        <P>Here&apos;s an example of a plane in three-dimensional space that separates four teal points from our orange-colored points (you can drag to rotate it around and see what&apos;s going on):</P>
+        <Float dir='right'>
+          <Graph3D dehydrated={graphs.basicSupportVector}/>
+        </Float>
+        <P>It&apos;s going to be important to think for a minute about what this looks like in equation form. Let&apos;s consider the 2D plane first. Suppose the equation for our separating line happens to be something like:</P>
+        <Center mb='4' style={{ fontSize: '1.5rem' }}><Eq>2x+3y=6</Eq></Center>
+        <P>This means that a point is on the line if twice its first coordinate plus three times its second coordinate is equal to 6.</P>
+        <P>Then we can tell which side of this line a particular point (x, y) is on by checking...</P>
+
+        <Quiz>
+          <>whether 2x + 3y is bigger or smaller than 6</>
+          <>whether 2x + 3y is positive or negative</>
+          <><Emoji symbol='✅' label='green check mark'/> Exactly. The line is where <Eq>2x+3y=6</Eq> is equal to 6, and on one side it will be greater and on the other side less.</>
+          <><Emoji symbol='🤔' label='thinking face'/> Not quite. The line is where <Eq>2x+3y=6</Eq> is equal to 6, and on one side it will be greater and on the other side less.</>
+        </Quiz>
+
+        <P>So, mathematically, the search for a separating line is equivalent to a search for an expression like <Eq>{'2x+3y=6'}</Eq> which happens to be larger than a certain value (6, say) for all teal points and smaller that value for all tomato-colored points.</P>
+        <P>Likewise, the equation for a separating plane in three dimensions might be something that looks like:</P>
+        <Center mb='4' style={{ fontSize: '1.5rem' }}><Eq>2x+3y+6z=12</Eq></Center>
+        <P>in which case the <Eq>2x+3y+6z</Eq> value for each teal point would be greater than 12 and for each tomato point would be less than 12.</P>
+        <P>Looking at things this way is important because...</P>
+        <Quiz>
+          <>we want to look at more than three pixels, and we can&apos;t visualize four-dimensional space</>
+          <>spatial reasoning isn&apos;t mathematically rigorous</>
+          <><Emoji symbol='✅' label='green check mark'/> Exactly. Handling even four tiny pixels with this approach will require a formulation like this one, which doesn&apos;t rely on our dimension-limited spatial reasoning ability.</>
+          <><Emoji symbol='🤔' label='thinking face'/> Actually it is! Or, at least, it can be. But the main thing going on here is that we can&apos;t continue to visualize spatially in dimensions higher than 3.</>
+        </Quiz>
+        <P>Moving from three dimensions to four (that is, considering four pixels instead of three), we can say that we&apos;re looking for an equation like: </P>
+        <Center mb='4' style={{ fontSize: '1.5rem' }}><Eq>−w+3x−2y+4.5z=1</Eq></Center>
+        <P></P>
       </Box>
     </Container>
   </>

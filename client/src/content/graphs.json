@@ -1,7 +1,7 @@
 {
-  "TvXwxo18": {
+  "basicSupportVector": {
     "metadata": {
-      "id": "TvXwxo18",
+      "id": "basicSupportVector",
       "title": "3D Support Vector"
     },
     "sortableTree": {
@@ -45,44 +45,47 @@
     "mathGraphics": {
       "4": {
         "type": "POINT",
-        "color": "#e74c3c",
+        "color": "#FE6348",
         "coords": "\\left[0.3,0.2,0.5\\right]"
       },
       "5": {
         "type": "POINT",
-        "color": "#e74c3c",
+        "color": "#FE6348",
         "coords": "\\left[0.9,0.1,0.2\\right]"
       },
       "6": {
         "type": "POINT",
-        "color": "#e74c3c",
+        "color": "#FE6348",
         "coords": "\\left[0.7,0.3,0.6\\right]"
       },
       "7": {
         "type": "POINT",
-        "color": "#e74c3c",
+        "color": "#FE6348",
         "coords": "\\left[0.2,0.7,0.7\\right]"
       },
       "9": {
         "type": "POINT",
-        "color": "#3498db",
+        "color": "#008080",
         "coords": "\\left[0.9,0.5,0.1\\right]"
       },
       "10": {
         "type": "POINT",
+        "color": "#008080",
         "coords": "\\left[0.6,0.6,0.5\\right]"
       },
       "11": {
         "type": "POINT",
+        "color": "#008080",
         "coords": "\\left[0.4,0.7,0.3\\right]"
       },
       "12": {
         "type": "POINT",
+        "color": "#008080",
         "coords": "\\left[0.5,0.8,0.4\\right]"
       },
       "15": {
         "type": "IMPLICIT_SURFACE",
-        "color": "#9b59b6",
+        "color": "#a4a4a4",
         "opacity": "0.5",
         "shaded": false,
         "rangeX": "\\left[0.1,\\ 1\\right]",
@@ -94,9 +97,9 @@
       "camera": {
         "type": "CAMERA",
         "relativePosition": [
-          -0.5290484504599833,
-          -3.023541156314816,
-          1.3810179820148296
+          2.351809854369033,
+          -2.407880867358105,
+          -0.0020471969259221456
         ],
         "relativeLookAt": [
           0,
