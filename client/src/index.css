@@ -8,6 +8,12 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: 'Maven Pro', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+  font-display: swap;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

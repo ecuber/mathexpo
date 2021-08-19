@@ -29,7 +29,7 @@ function App () {
       </Box>
       <Box>
         <Float dir='right'>
-          <Image mb={{ base: '5', md: 0 }} src='/assets/terminator.jpg'/>
+          <Image mb={{ base: '5', md: 0 }} loading='eager' src='/assets/terminator.jpg'/>
         </Float>
         <P>For most, the words &quot;artificial intelligence&quot; and evoke images of the Terminator and robot armies taking over the world. While we haven&apos;t reached that point (yet), <strong>machine learning</strong>, a subset of modern AI, has become ubiquitous in the tech industry and data science field.</P>
         <P>Pop culture and media tend to depict machine learning (generally abbreviated as ML) as a mystical branch of computer science that only the most talented programmers and mathematicians are capable of comprehending. While that may have been true decades ago, the barrier to entry in 2021 has fallen dramatically. </P>
@@ -69,7 +69,7 @@ function App () {
         <Heading>Image Data</Heading>
         <P>Suppose you want a computer to accomplish a complex task, such as recognizing a pedestrian in a self-driving car&apos;s camera feed.</P>
         <Box w='100%' mb={5}>
-          <Image mx='auto' w={{ base: '90%', lg: '50%' }} src='/assets/pedestrian.jpeg'/>
+          <Image mx='auto' w={{ base: '90%', lg: '50%' }} loading='lazy' src='/assets/pedestrian.jpeg'/>
           <Caption>Pedestrian near a crosswalk</Caption>
         </Box>
         <P>Which most accurately describes how a computer would &quot;perceive&quot; this image?</P>
@@ -82,7 +82,7 @@ function App () {
           <><Emoji symbol='✅' label='green check mark'/> Yep. Pictures taken by digital cameras are stored as <strong>a grid of color values.</strong></>
         </Quiz>
         <Float dir='right'>
-          <Image mx='auto' src='/assets/zoom.gif'/>
+          <Image mx='auto' loading='lazy' src='/assets/zoom.gif'/>
           <Caption>Look at those pixels</Caption>
         </Float>
         <P>You probably don&apos;t notice it when the photo is zoomed out, but let&apos;s take a closer look at the little squares that comprise the image. We&apos;ll zoom in on the corner of the crosswalk stripe.</P>
@@ -95,7 +95,7 @@ function App () {
         <P>So in order to determine whether there&apos;s a pedestrian in the crosswalk, we&apos;ll need to somehow process all 480,000 numbers to generate a useful output. In this case, it would be useful to produce a number: either a 0 (to indicate no pedestrian) or a 1 (for one or more pedestrians).</P>
         <P>There are endless ways to manipulate the grid of numbers that represents the image in order to get out that 0 or 1, but let&apos;s try this: look at <strong>a single, specific pixel somewhere in the image,</strong> and if its value is bigger than, say, 8388608, give an output of 1. If it&apos;s smaller, give an output of 0.</P>
         <Float dir='right'>
-          <Image src='/assets/highlighted.png'/>
+          <Image loading='lazy' src='/assets/highlighted.png'/>
           <Caption>This is the pixel in question!</Caption>
         </Float>
         <P>Suppose the pixel we are checking is the one here, highlighted in blue, and that its numerical value is 4313. Based on the rule we defined, we would return a...</P>
@@ -132,9 +132,9 @@ function App () {
 
       <Box>
         <P>Here&apos;s a <strong>single point</strong> on a <strong>number line:</strong></P>
-        <Image w={{ base: '90%', md: '70%' }} m='auto' src='/assets/line.svg'/>
+        <Image loading='lazy' w={{ base: '90%', md: '70%' }} m='auto' src='/assets/line.svg'/>
         <P style={{ marginTop: '2rem', width: '95%' }}>And here is a <strong>pair of numbers</strong> on a <strong>plane.</strong> We call the values 2 and 3 the coordinates of the point <strong>(2, 3).</strong></P>
-        <Image w={{ base: '90%', sm: '70%', md: '50%' }} m='auto' mb='10' src='/assets/plane.svg'/>
+        <Image loading='lazy' w={{ base: '90%', sm: '70%', md: '50%' }} m='auto' mb='10' src='/assets/plane.svg'/>
 
         <P>Because this geometric connection between pixel colors and points in the plane is so important to the story, let&apos;s make it really tangible. You can control the colors of the two pixels in this mathlet by dragging the point around in the square on the right.</P>
         <br/>
