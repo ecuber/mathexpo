@@ -10369,10 +10369,10 @@ math-log2@^1.0.1:
   resolved "https://registry.yarnpkg.com/math-log2/-/math-log2-1.0.1.tgz#fb8941be5f5ebe8979e718e6273b178e58694565"
   integrity sha1-+4lBvl9evol55xjmJzsXjlhpRWU=
 
-math3d-component@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/math3d-component/-/math3d-component-1.5.0.tgz#1c93f5bc4251501fa592af7639295d82afa53eb4"
-  integrity sha512-pcfaxw7zgy7uGrp8AToC47rNRPybaLtccFn6dr/MHXk3f51pT1wfiBD63dVXsrj/nBhsiSfJt3QBYB97irzUDQ==
+math3d-component@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/math3d-component/-/math3d-component-1.5.1.tgz#5140f000a2245fa8446742f5ebeb6568771b577b"
+  integrity sha512-VKRTp6EEu2+hdyf4TCoMS2tpb1BZjky6SlUhuQW/EUtYqu61afo1fs34KESW9T+YNAviEcoRGWw5f57IuEXKaw==
   dependencies:
     antd "^3.15.0"
     classnames "^2.2.6"
