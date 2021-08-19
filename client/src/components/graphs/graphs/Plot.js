@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react'
+import React from 'react'
 import { data, layout, config } from '../../../content/plotly.json'
 import Plotly from 'react-plotly.js'
 import { Box } from '@chakra-ui/layout'
