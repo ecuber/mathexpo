@@ -19,10 +19,26 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000"
 [[headers]]
-  for = "*.jpeg" # gif files too
+  for = "*.jpeg"
   [headers.values]
     Cache-Control = "public, max-age=31536000"
 [[headers]]
-  for = "*.svg" # gif files too
+  for = "*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+[[headers]]
+  for = "*.eot"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+[[headers]]
+  for = "*.ttf"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+[[headers]]
+  for = "*.woff"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+[[headers]]
+  for = "*.woff2"
   [headers.values]
     Cache-Control = "public, max-age=31536000"
