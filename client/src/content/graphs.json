@@ -97,9 +97,9 @@
       "camera": {
         "type": "CAMERA",
         "relativePosition": [
-          2.351809854369033,
-          -2.407880867358105,
-          -0.0020471969259221456
+          1.5523576719912981,
+          -2.1904409133737057,
+          -0.5549600674295273
         ],
         "relativeLookAt": [
           0,
@@ -128,30 +128,200 @@
       "2": 4.283692482863561
     }
   },
+
   "volumemin": {
     "metadata": {
-      "id": "volumemin"
+      "id": "volumemin",
+      "title": "Minimization"
     },
     "sortableTree": {
+      "2": [
+        "3",
+        "4",
+        "5"
+      ],
+      "8": [
+        "22",
+        "10",
+        "11",
+        "13",
+        "16",
+        "7",
+        "19",
+        "9",
+        "15",
+        "18",
+        "20"
+      ],
       "root": [
+        "2",
+        "8",
         "mainFolder"
       ],
-      "mainFolder": []
+      "mainFolder": [
+        "1",
+        "6"
+      ]
+    },
+    "folders": {
+      "2": {
+        "description": "Variables"
+      },
+      "8": {
+        "description": "Point0"
+      },
+      "mainFolder": {
+        "description": "Plane"
+      }
+    },
+    "mathSymbols": {
+      "1": {
+        "type": "VARIABLE",
+        "name": "f(x,\\ y)",
+        "value": "k_1\\cdot x+k_2\\cdot y+b"
+      },
+      "3": {
+        "type": "VARIABLE_SLIDER",
+        "name": "k_1",
+        "min": "-2",
+        "max": "2"
+      },
+      "4": {
+        "type": "VARIABLE_SLIDER",
+        "name": "k_2",
+        "min": "-2",
+        "max": "2"
+      },
+      "5": {
+        "type": "VARIABLE_SLIDER",
+        "name": "b",
+        "min": "-2",
+        "max": "2"
+      },
+      "10": {
+        "type": "VARIABLE",
+        "name": "p_{x0}",
+        "value": "0.5",
+        "description": "0-PointX"
+      },
+      "11": {
+        "type": "VARIABLE",
+        "name": "p_{y0}",
+        "value": "0.2",
+        "description": "0-PointY"
+      },
+      "13": {
+        "type": "VARIABLE",
+        "name": "p_{z0}",
+        "value": "0.4",
+        "description": "0-PointZ"
+      },
+      "16": {
+        "type": "VARIABLE",
+        "name": "L_0",
+        "value": "\\operatorname{abs}\\left(f\\left(p_{x0},\\ p_{z0}\\right)-p_{z0}\\right)",
+        "description": "0-Length"
+      },
+      "22": {
+        "type": "VARIABLE",
+        "name": "A_0",
+        "value": "L_0^2"
+      }
     },
     "mathGraphics": {
+      "6": {
+        "type": "IMPLICIT_SURFACE",
+        "color": "#808080",
+        "opacity": "0.3",
+        "rangeX": "\\left[0,\\ 1.1\\right]",
+        "rangeY": "\\left[0,\\ 1.1\\right]",
+        "rangeZ": "\\left[-0.2,\\ 1.4\\right]",
+        "lhs": "_f(x,y,z)=f\\left(x,\\ y\\right)",
+        "rhs": "_f(x,y,z)=z"
+      },
+      "7": {
+        "type": "POINT",
+        "description": "0-PointOrigin",
+        "color": "#e67e22",
+        "coords": "\\left[p_{x0},\\ p_{y0},\\ p_{z0}\\right]"
+      },
+      "9": {
+        "type": "LINE",
+        "description": "0-Vertical-0",
+        "color": "#e67e22",
+        "coords": "\\left[\\left[p_{x0},\\ p_{y0},\\ p_{z0}\\right],\\left[p_{x0},\\ p_{y0},\\ f\\left(p_{x0},\\ p_{y0}\\right)\\right]\\right]"
+      },
+      "15": {
+        "type": "LINE",
+        "description": "0-Vertical-1",
+        "color": "#e67e22",
+        "coords": "\\left[\\left[p_{x0}-L_0,\\ p_{y0},\\ p_{z0}\\right],\\left[p_{x0}-L_0,\\ p_{y0},\\ f\\left(p_{x0},\\ p_{y0}\\right)\\right]\\right]"
+      },
+      "18": {
+        "type": "LINE",
+        "description": "0-Horiz-0",
+        "color": "#e67e22",
+        "coords": "\\left[\\left[p_{x0},\\ p_{y0},\\ p_{z0}\\right],\\left[p_{x0}-L_0,\\ p_{y0},\\ p_{z0}\\right]\\right]"
+      },
+      "19": {
+        "type": "POINT",
+        "description": "0-PointPlane",
+        "color": "#808080",
+        "zIndex": "1",
+        "coords": "\\left[p_{x0},\\ p_{y0},\\ f\\left(p_{x0},\\ p_{y0}\\right)\\right]"
+      },
+      "20": {
+        "type": "LINE",
+        "description": "0-Horiz-1",
+        "color": "#e67e22",
+        "coords": "\\left[\\left[p_{x0},\\ p_{y0},\\ f\\left(p_{x0},\\ p_{y0}\\right)\\right],\\left[p_{x0}-L_0,\\ p_{y0},\\ f\\left(p_{x0},\\ p_{y0}\\right)\\right]\\right]"
+      },
       "camera": {
         "type": "CAMERA",
         "relativePosition": [
-          0.4999999999999996,
-          -1.9999999999999984,
-          0.49999999999999933
+          0.3670534624062208,
+          -2.4454293277842782,
+          0.0826486390780361
         ],
         "relativeLookAt": [
           0,
           0,
           0
         ]
+      },
+      "axis-x": {
+        "type": "AXIS",
+        "min": "0",
+        "max": "1",
+        "scale": "0.5"
+      },
+      "axis-y": {
+        "type": "AXIS",
+        "min": "0",
+        "max": "1",
+        "scale": "0.5"
+      },
+      "axis-z": {
+        "type": "AXIS",
+        "min": "0",
+        "max": "1",
+        "scale": "0.55"
+      },
+      "grid-xy": {
+        "type": "GRID",
+        "width": "\\frac{3}{4}",
+        "divisions": "\\left[5,\\ 5\\right]"
+      },
+      "grid-yz": {
+        "type": "GRID",
+        "width": "\\frac{1}{8}"
       }
+    },
+    "sliderValues": {
+      "3": 1.16,
+      "4": -0.12,
+      "5": -0.48,
+      "23": 0.2
     }
   }
 }

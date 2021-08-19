@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import Graph2D from '../components/Graph2D'
 
 const logic = `
 stat = import('Math/Statistics');
 
-$board.setView([-3, 2, 2, -1.5]);
+$board.setView([-3, 2, 1.5, -0.5]);
 
 d = 2.5;
 
@@ -33,13 +34,13 @@ mu = point(0, 0) <<id: 'mu', name: '$\\mathbf{b}$', color: 'black', withLabel: f
 headx = point(1, 0) <<id: 'headx', color: 'green', withLabel: false>>;
 heady = point(0, 1) <<id: 'heady', color: '#6495ED', withLabel: false>>;
 
-button(-1, -1, 'reset', function() {
-  moveresult = $('headx').moveTo([1, 0]);
-  moveresult = $('heady').moveTo([0, 1]);
-  moveresult = $('mu').moveTo([0, 0]);
-  moveresult = $('lefthandle').moveTo([0.5, -0.25]);
-  moveresult = $('righthandle').moveTo([0.5, 1.25]);
-});
+// button(-1, -1, 'reset', function() {
+//   moveresult = $('headx').moveTo([1, 0]);
+//   moveresult = $('heady').moveTo([0, 1]);
+//   moveresult = $('mu').moveTo([0, 0]);
+//   moveresult = $('lefthandle').moveTo([0.5, -0.25]);
+//   moveresult = $('righthandle').moveTo([0.5, 1.25]);
+// });
 
 firstcol = point(function() {return headx.X() - mu.X();},
       function() {return headx.Y() - mu.Y();}) <<visible: false>>;
@@ -153,6 +154,18 @@ for(ii = 0; ii < nn; ii = ii + 1) {
   $('finalimage' + ii).size = sizefunction(ii);
 };
 `
-const Semi = props => <Graph2D logic={logic} aspectRatio={0.7}/>
+
+const Semi = props => {
+  const [rerenders, setRerenders] = useState(0)
+  useEffect(() => {
+    setRerenders(rerenders + 1)
+  }, [props.rerender])
+
+  return <Graph2D key={rerenders} logic={logic} aspectRatio={0.55}/>
+}
+
+Semi.propTypes = {
+  rerender: PropTypes.bool
+}
 
 export default Semi

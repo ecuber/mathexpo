@@ -78,7 +78,7 @@ point(1, 0) <<id: 'east', visible: false>>;
 point(0, 1) <<id: 'north', visible: false>>;
 axis(origin, east) <<id: 'xaxis', ticks: <<minorHeight: 5, majorHeight: 12, drawZero: false, label: <<anchorX: 'middle', offset: [0, -14]>>>>>>;
 axis(origin, north) <<id: 'yaxis', ticks: <<minorHeight: 5, majorHeight: 12, drawZero: false, label: <<anchorY: 'middle', offset: [14, 0]>>>>>>;
-                                            
+
 pts = <<color: '#DDD',
         withLabel: false,
         strokeWidth: 2,

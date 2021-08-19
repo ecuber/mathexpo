@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Box, Button, Container, Flex, Heading, Image, Center, Tooltip } from '@chakra-ui/react'
 import Header from './components/layout/components/Header'
 import { P, Subtitle, Float, Caption, Quiz, Emoji } from './components/layout'
-import { Optimize2D, Scatter2D, TwoPixel, Line2D, Slab, ScatterNN, Semi } from './components/graphs'
+import { Optimize2D, Scatter2D, TwoPixel, Line2D, Slab, ScatterNN, Semi, Folding } from './components/graphs'
 import InfoBlock from './components/layout/components/InfoBlock'
 import Graph3D from './components/Graph3D'
 import graphs from './content/graphs.json'
@@ -15,6 +15,7 @@ function App () {
   const [showDiagonal, setShowDiagonal] = useState(false)
   const [solution1, setSolution1] = useState(false)
   const [solution2, setSolution2] = useState(false)
+  const [semi, setSemi] = useState(false)
 
   return (
   <>
@@ -182,7 +183,7 @@ function App () {
           </Button>
         </Flex>
         <P>The thing we just did—finding the thickest slab which separates two classes of points—is actually one of the most commonly used machine learning models! <strong>It&apos;s called a <u><Tooltip _hover={{ cursor: 'auto pointer' }} hasArrow label='Regarding the name, support vector is a term used to describe points on the edge of the slab, like the two orange-colored points and one teal point in the example above.'>support vector machine</Tooltip></u>.</strong></P>
-        <P>You might be guessing that this particular support vector machine, which looks at only two pixels, isn&apos;t very useful if we have 480,000 pixels in our whole image that are available to make predictions. You&apos;d be right.</P>
+        <P>You might guess that this particular support vector machine, which looks at only two pixels, isn&apos;t very useful if we have 480,000 pixels in our whole image that are available to make predictions. You&apos;d be right.</P>
         <P>But that&apos;s because it&apos;s only looking at two pixels. If we look at three pixel values, we&apos;d get points in three-dimensional space, and those points could be separated with— you guessed it— a three-dimensional plane!</P>
       </Box>
 
@@ -249,15 +250,20 @@ function App () {
         <P>We should be able to separate these points, just <em>not with a line.</em> We would want to use a <em>curve</em> instead, perhaps one which encircles the teal points in the middle.</P>
         <P>It shouldn&apos;t be surprising that this kind of situation comes up in practice a lot, because there&apos;s nothing all that special about lines and planes. It could very well happen that the data from each class (pedestrian/non-pedestrian) tend to show up in particular regions in the space of images, but that those regions happen to be entangled from the point of a view of a separating line/plane.</P>
         <P>If we&apos;re going to overcome the &quot;flatness&quot; limitation of lines and planes, we&apos;ll need the ability to <em>morph</em> or <em>fold</em> space somehow.</P>
+        <Float dir='right'>
+          <Folding/>
+        </Float>
+        <P>For example, perhaps the simplest way to fold space is to choose a line and <strong>reflect every point which is below it.</strong> Try dragging the <strong>gray</strong> line in such a way that the classes of points would be <strong>readily separable</strong> by a second line (the dark blue one).</P>
         <P>Being able to use these two lines in tandem gives us a lot more flexibility.</P>
         <P>The mathematical term for the idea we&apos;re leveraging here is <strong>composition.</strong> In other words, we take two actions in sequence: first we reflect all the points based on the location of the gray line, and then we figure out which side of the blue line each resulting point is on.</P>
+        <br/>
         <P>We call these sequential actions <strong>layers</strong>. For example, we&apos;d say that the reflection in the mathlet above is the first layer, and the separating line is the second layer.</P>
         <P>Furthermore, there&apos;s no reason to stop at two layers! We could, for example, fold across one line, then fold across a second line, and then separate the points with a third line.</P>
-        <P>Another cool thing about this is that the training procedure is not complicated by the extra layers. We can still wiggle each line a little bit and ask whether it makes the final results slightly better or worse. Then we update everything at once (each line moving according to how it, individually, affected the final outcome) and repeat.</P>
         <P>This generalization of the support vector machine, which allows a sequence of space-morphing actions prior to separating the points, is called a <strong>neural network.</strong></P>
         <P>One popular space-morphing action is <em>to make the coordinate axes sticky.</em> This might seem strange, but actually it tends to work quite well.</P>
         <Float dir='right'>
-          <Semi />
+          <Semi rerender={semi}/>
+          <Center><Button size='md' onClick={() => setSemi(!semi)}>Reset</Button></Center>
         </Float>
         <P>Consider the following problem, where we&apos;re trying to classify every point inside the semicircle as yellow, and every point outside as purple. </P>
         <P>To accomplish this feat, we&apos;re allowed to <em>linearly</em> transform the points however we want (rotate/scale/translate/etc). You can move the green and blue vectors to control this transformation. Then any points which happened to cross a coordinate axis get snapped back to it. Lastly, we try to separate the points using the line (which you can rotate using the tomtato handle or translate by grabbing it anywhere else).</P>

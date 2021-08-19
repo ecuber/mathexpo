@@ -5,5 +5,15 @@ import Line2D from './graphs/Line2D'
 import Slab from './graphs/Slab'
 import ScatterNN from './graphs/ScatterNN'
 import Semi from './graphs/Semi'
+import Folding from './graphs/Folding'
 
-export { Optimize2D, TwoPixel, Scatter2D, Line2D, Slab, ScatterNN, Semi }
+export {
+  Optimize2D,
+  TwoPixel,
+  Scatter2D,
+  Line2D,
+  Slab,
+  ScatterNN,
+  Semi,
+  Folding
+}
