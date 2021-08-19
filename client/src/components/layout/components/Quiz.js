@@ -7,7 +7,7 @@ const Quiz = props => {
   const [selection, setSelection] = useState(-1)
   const midSlice = props.children.length / 2
   return <Box>
-    <Center flexWrap='wrap' height=''>
+    <Center flexWrap='wrap'>
       {props.children.slice(0, midSlice).map((option, i) => {
         return <Button
           key={i}

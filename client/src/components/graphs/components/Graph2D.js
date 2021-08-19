@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import JSXGraph from '@sswatson/jsxgraph-react-js'
 
@@ -6,7 +6,7 @@ function Graph2D (props) {
   const { aspectRatio } = props
   const [forceRerender, setForceRerender] = useState(1)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     let timeoutId
 
     const resizeUpdate = () => {

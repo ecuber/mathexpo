@@ -264,6 +264,8 @@ function App () {
         <P>We call these sequential actions <strong>layers</strong>. For example, we&apos;d say that the reflection in the mathlet above is the first layer, and the separating line is the second layer.</P>
         <P>Furthermore, there&apos;s no reason to stop at two layers! We could, for example, fold across one line, then fold across a second line, and then separate the points with a third line.</P>
         <P>This generalization of the support vector machine, which allows a sequence of space-morphing actions prior to separating the points, is called a <strong>neural network.</strong></P>
+
+        <Heading size='lg' as='h3'>Sticky Axes: ReLU Layers</Heading>
         <P>One popular space-morphing action is <em>to make the coordinate axes sticky.</em> This might seem strange, but actually it tends to work quite well.</P>
         <Float dir='right'>
           <Semi rerender={semi}/>
@@ -281,10 +283,29 @@ function App () {
             <li><strong><em>Reduced</em> flexibility</strong> in what the transformations can do.</li>
           </chakra.ol>
         </P>
-        <Float dir='right'>
-          <Plot/>
-        </Float>
-        <P>Here&apos;s an example where our data points are in 3D space. We&apos;ll use a neural network with several dense layers with ReLU activation. Some of the layers use more than three dimensions, so isn&apos;t possible to visualize each transformation as we did above. But we can still take a look at the decision surface it produces (the surface the model uses to predict: teal on one side, tomato on the other).</P>
+        <Plot/>
+        <br/>
+        <br/>
+        <P>Here&apos;s an example where our data points are in 3D space. We&apos;ll use a neural network with several dense layers with ReLU activation. Some of the layers use more than three dimensions, so isn&apos;t possible to visualize each transformation as we did above. But we can still take a look at the surface the model uses to predict: teal on one side, tomato on the other.</P>
+        <P>Adjust the slider to observe how the decision surface &quot;shrink wraps&quot; around the tomato points as the model trains (the values on the slider indicate the number of transformations that have been taken place).</P>
+        <P>At the end, are there still some points on the wrong side of the surface?</P>
+        <Quiz>
+          <>Yes, there are some misclassified points</>
+          <>Nope!</>
+          <><Emoji symbol='✅' label='green check mark'/> Yes, there are still a few tomato-colored points above the surface.</>
+          <><Emoji symbol='🤔' label='thinking face'/> If you look closely, you&apos;ll find that there are still a few tomato-colored points above the surface.</>
+        </Quiz>
+        <P>The decision surface has sharp creases, just like the decision boundary in the two-dimensional case has sharp corners. Nevertheless, the model has enough flexibility to use its flat facets to mold to the data and separate out the points quite nicely.</P>
+        <P>This picture perfectly encapsulates one aspect of what makes neural networks so powerful: in many real data problems, the points from the two classes are somewhat entangled, but not hopelessly so. Neural networks have the flexibility to produce decision surfaces of pretty much any shape, and the training process often does allow suitable shapes to form.</P>
+      </Box>
+
+      <Box>
+        <Heading>Closing</Heading>
+        <P>Just like that, you&apos;ve experienced the basis for the bleeding-edge of machine learning technology. Hopefully you found this introduction helpful!</P>
+        <P>If you&apos;re hungry for more, I highly recommend the <a style={{ color: '#565875', textDecoration: 'underline' }} href='https://youtu.be/aircAruvnKk' target='_blank' rel='noreferrer'>excellent video series</a> on neural networks by 3Blue1Brown. He goes through the key introductory ideas in vivid detail.</P>
+        <P>Happy hacking!</P>
+        <br/>
+        <br/>
       </Box>
     </Container>
   </>
