@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { Box, Button, Container, Flex, Heading, Image, Center, Tooltip } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, Image, Center, Tooltip, chakra } from '@chakra-ui/react'
+import { StaticMathField as Eq } from 'react-mathquill'
+
 import Header from './components/layout/components/Header'
 import { P, Subtitle, Float, Caption, Quiz, Emoji } from './components/layout'
-import { Optimize2D, Scatter2D, TwoPixel, Line2D, Slab, ScatterNN, Semi, Folding } from './components/graphs'
+import { Optimize2D, Scatter2D, TwoPixel, Line2D, Slab, ScatterNN, Semi, Folding, Graph3D, Plot } from './components/graphs'
 import InfoBlock from './components/layout/components/InfoBlock'
-import Graph3D from './components/Graph3D'
 import graphs from './content/graphs.json'
-import { StaticMathField as Eq } from 'react-mathquill'
 
 const ContainerBreakpoints = ['100%', 'container.lg']
 
@@ -56,6 +56,10 @@ function App () {
           </Flex>
           <P>The best we can do is roughly 1.373, so if you managed to get there, great job!</P>
           <P>Incidentally, one way to get there without having to rely on luck is to adjust one handle at a time: we move one of the two ends up and down to get the orange area as low as possible. Then we drag the other dot to get the area even lower. Then back to the first dot, and so on, back and forth. Pretty soon we&apos;ll get it to a point where the orange area isn&apos;t decreasing anymore, and then we can declare victory!</P>
+          <P>Let&apos;s try it again, this time on a 3D plane instead of 2D. Drag the sliders on the left side to transform the gray plane, and see how small you can get the orange area!</P>
+          <Box m='auto' w='95%'>
+            <Graph3D dehydrated={graphs.volumemin} drawer aspectRatio={16 / 9}/>
+          </Box>
           <P>Just like that, you&apos;ve already learned your first machine learning idea! By dragging the line into place one end at a time, you&apos;ve carried out an optimization algorithm called <strong>coordinate descent</strong>. Making adjustments to try to minimize some undesirable quantity (like the orange area in the mathlet) is a major theme in machine learning. You&apos;re well on your way at this point, even though we still need to talk about what machine learning is.</P>
         </Box>
       </Box>
@@ -266,8 +270,21 @@ function App () {
           <Center><Button size='md' onClick={() => setSemi(!semi)}>Reset</Button></Center>
         </Float>
         <P>Consider the following problem, where we&apos;re trying to classify every point inside the semicircle as yellow, and every point outside as purple. </P>
-        <P>To accomplish this feat, we&apos;re allowed to <em>linearly</em> transform the points however we want (rotate/scale/translate/etc). You can move the green and blue vectors to control this transformation. Then any points which happened to cross a coordinate axis get snapped back to it. Lastly, we try to separate the points using the line (which you can rotate using the tomtato handle or translate by grabbing it anywhere else).</P>
-        {/* <Graph3D dehydrated={graphs.volumemin} dev/> */}
+        <P>To accomplish this feat, we&apos;re allowed to <em>linearly</em> transform the points however we want (rotate/scale/translate/etc). </P>
+        <P>You can move the green and blue vectors to control this transformation. Then any points which happened to cross a coordinate axis get snapped back to it. Lastly, we try to separate the points using the line (which you can rotate using the tomtato handle or translate by grabbing it anywhere else).</P>
+        <P>See if you can get most of the points classified correctly.</P>
+        <P>This kind of layer (one that uses linear transormation of the data), is known in the business as a dense layer with ReLU activation (pronounced RAY-loo). A typical neural network used in research or industry works on exactly the same principles as the example we just experimented with. </P>
+        <P>The key differences are:
+          <chakra.ol ml={10}>
+            <li><strong>The number of layers.</strong> Normally, there are many more than two.</li>
+            <li><strong>The number of dimensions</strong> in the spaces being transformed along the way. Again, typically many more than two.</li>
+            <li><strong><em>Reduced</em> flexibility</strong> in what the transformations can do.</li>
+          </chakra.ol>
+        </P>
+        <Float dir='right'>
+          <Plot/>
+        </Float>
+        <P>Here&apos;s an example where our data points are in 3D space. We&apos;ll use a neural network with several dense layers with ReLU activation. Some of the layers use more than three dimensions, so isn&apos;t possible to visualize each transformation as we did above. But we can still take a look at the decision surface it produces (the surface the model uses to predict: teal on one side, tomato on the other).</P>
       </Box>
     </Container>
   </>

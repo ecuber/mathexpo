@@ -6,6 +6,8 @@ import Slab from './graphs/Slab'
 import ScatterNN from './graphs/ScatterNN'
 import Semi from './graphs/Semi'
 import Folding from './graphs/Folding'
+import Graph3D from './components/Graph3D'
+import Plot from './graphs/Plot'
 
 export {
   Optimize2D,
@@ -15,5 +17,7 @@ export {
   Slab,
   ScatterNN,
   Semi,
-  Folding
+  Folding,
+  Graph3D,
+  Plot
 }
