@@ -178,11 +178,25 @@
         "46",
         "47"
       ],
+      "62": [
+        "63",
+        "64",
+        "65",
+        "66",
+        "67",
+        "68",
+        "69",
+        "71",
+        "73",
+        "75",
+        "77"
+      ],
       "root": [
         "1",
         "18",
         "20",
         "41",
+        "62",
         "mainFolder"
       ],
       "mainFolder": [
@@ -206,6 +220,10 @@
         "isCollapsed": true,
         "description": "Point2"
       },
+      "62": {
+        "isCollapsed": true,
+        "description": "Point3"
+      },
       "mainFolder": {
         "isCollapsed": true,
         "description": "Plane"
@@ -215,7 +233,6 @@
       "2": {
         "type": "VARIABLE_SLIDER",
         "name": "k_1",
-        "value": "1.54",
         "min": "-2",
         "max": "2",
         "description": "x-Slope"
@@ -223,7 +240,6 @@
       "3": {
         "type": "VARIABLE_SLIDER",
         "name": "k_2",
-        "value": "0.3",
         "min": "-2",
         "max": "2",
         "description": "y-Slope"
@@ -231,7 +247,6 @@
       "4": {
         "type": "VARIABLE_SLIDER",
         "name": "b",
-        "value": "-0.6",
         "min": "-2",
         "max": "2",
         "description": "Vertical Shift"
@@ -262,7 +277,7 @@
       "11": {
         "type": "VARIABLE",
         "name": "L_0",
-        "value": "\\operatorname{abs}\\left(f\\left(p_{x0},\\ p_{z0}\\right)-p_{z0}\\right)",
+        "value": "\\operatorname{abs}\\left(f\\left(p_{x0},\\ p_{y0}\\right)-p_{z0}\\right)",
         "description": "0-Length"
       },
       "12": {
@@ -291,7 +306,7 @@
       "33": {
         "type": "VARIABLE",
         "name": "L_1",
-        "value": "\\operatorname{abs}\\left(f\\left(p_{x1},\\ p_{z1}\\right)-p_{z1}\\right)",
+        "value": "\\operatorname{abs}\\left(f\\left(p_{x1},\\ p_{y1}\\right)-p_{z1}\\right)",
         "description": "1-Length"
       },
       "35": {
@@ -314,13 +329,13 @@
       "52": {
         "type": "VARIABLE",
         "name": "p_{z2}",
-        "value": "0.3",
+        "value": "0.2",
         "description": "2-PointZ"
       },
       "54": {
         "type": "VARIABLE",
         "name": "L_2",
-        "value": "\\operatorname{abs}\\left(f\\left(p_{x2},\\ p_{z2}\\right)-p_{z2}\\right)",
+        "value": "\\operatorname{abs}\\left(f\\left(p_{x2},\\ p_{y2}\\right)-p_{z2}\\right)",
         "description": "2-Length"
       },
       "56": {
@@ -328,6 +343,35 @@
         "name": "A_2",
         "value": "L_2^2",
         "description": "Area"
+      },
+      "69": {
+        "type": "VARIABLE",
+        "name": "p_{x3}",
+        "value": "0.4",
+        "description": "3-PointX"
+      },
+      "71": {
+        "type": "VARIABLE",
+        "name": "p_{y3}",
+        "value": "0.5",
+        "description": "3-PointY"
+      },
+      "73": {
+        "type": "VARIABLE",
+        "name": "p_{z3}",
+        "value": "0.8",
+        "description": "3-PointZ"
+      },
+      "75": {
+        "type": "VARIABLE",
+        "name": "L_3",
+        "value": "\\operatorname{abs}\\left(f\\left(p_{x3},\\ p_{y3}\\right)-p_{z3}\\right)",
+        "description": "3-Length"
+      },
+      "77": {
+        "type": "VARIABLE",
+        "name": "A_3",
+        "value": "L_3^2"
       }
     },
     "mathGraphics": {
@@ -456,12 +500,49 @@
         "color": "#FFA500",
         "coords": "\\left[\\left[p_{x2},\\ p_{y2},\\ f\\left(p_{x2},\\ p_{y2}\\right)\\right],\\left[p_{x2}+L_2,\\ p_{y2},\\ f\\left(p_{x2},\\ p_{y2}\\right)\\right]\\right]"
       },
+      "63": {
+        "type": "POINT",
+        "description": "3-PointOrigin",
+        "color": "#008080",
+        "coords": "\\left[p_{x3},\\ p_{y3},\\ p_{z3}\\right]"
+      },
+      "64": {
+        "type": "POINT",
+        "description": "3-PointPlane",
+        "color": "#808080",
+        "zIndex": "1",
+        "coords": "\\left[p_{x3},\\ p_{y3},\\ f\\left(p_{x3},\\ p_{y3}\\right)\\right]"
+      },
+      "65": {
+        "type": "LINE",
+        "description": "3-Vertical-0",
+        "color": "#FF0000",
+        "coords": "\\left[\\left[p_{x3},\\ p_{y3},\\ p_{z3}\\right],\\left[p_{x3},\\ p_{y3},\\ f\\left(p_{x3},\\ p_{y3}\\right)\\right]\\right]"
+      },
+      "66": {
+        "type": "LINE",
+        "description": "3-Vertical-1",
+        "color": "#e67e22",
+        "coords": "\\left[\\left[p_{x3}-L_3,\\ p_{y3},\\ p_{z3}\\right],\\left[p_{x3}-L_3,\\ p_{y3},\\ f\\left(p_{x3},\\ p_{y3}\\right)\\right]\\right]"
+      },
+      "67": {
+        "type": "LINE",
+        "description": "3-Horiz-0",
+        "color": "#e67e22",
+        "coords": "\\left[\\left[p_{x3},\\ p_{y3},\\ p_{z3}\\right],\\left[p_{x3}-L_3,\\ p_{y3},\\ p_{z3}\\right]\\right]"
+      },
+      "68": {
+        "type": "LINE",
+        "description": "3-Horiz-1",
+        "color": "#e67e22",
+        "coords": "\\left[\\left[p_{x3},\\ p_{y3},\\ f\\left(p_{x3},\\ p_{y3}\\right)\\right],\\left[p_{x3}-L_3,\\ p_{y3},\\ f\\left(p_{x3},\\ p_{y3}\\right)\\right]\\right]"
+      },
       "camera": {
         "type": "CAMERA",
         "relativePosition": [
-          0.9781018132088901,
-          -1.8562152924156246,
-          0.31270054555942806
+          1.1487082245727132,
+          -1.7833864697899826,
+          0.001454015719662638
         ],
         "relativeLookAt": [
           0,
@@ -498,9 +579,9 @@
       }
     },
     "sliderValues": {
-      "2": 1.04,
-      "3": -0.12,
-      "4": -0.4
+      "2": 0.72,
+      "3": 0.88,
+      "4": -0.44
     }
   }
 }

@@ -6,5 +6,6 @@ import Caption from './components/Caption'
 import Quiz from './components/Quiz'
 import Emoji from './components/Emoji'
 import Placeholder from './components/Placeholder'
+import InfoBlock from './components/InfoBlock'
 
-export { Header, P, Subtitle, Float, Caption, Quiz, Emoji, Placeholder }
+export { Header, P, Subtitle, Float, Caption, Quiz, Emoji, Placeholder, InfoBlock }

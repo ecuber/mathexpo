@@ -13,6 +13,15 @@ const theme = extendTheme({
         fontFamily: 'Ubuntu Mono, monospace',
         margin: 'auto'
       }
+    },
+    Tooltip: {
+      baseStyle: {
+        size: 'lg',
+        fontFamily: 'Ubuntu Mono, monospace',
+        padding: 2,
+        fontSize: '0.9rem',
+        fontWeight: 'bold'
+      }
     }
   }
 })
