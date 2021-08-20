@@ -9,7 +9,8 @@ import {
   Predictions,
   NumericOptimization,
   NeuralNetworks,
-  Closing
+  Closing,
+  LearningFromData
 } from './content'
 
 const ContainerBreakpoints = ['100%', 'container.lg']
@@ -24,6 +25,7 @@ function App () {
       <MachineLearning/>
       <ImageData/>
       <Predictions/>
+      <LearningFromData/>
       <HigherDimensions/>
       <NumericOptimization/>
       <NeuralNetworks/>

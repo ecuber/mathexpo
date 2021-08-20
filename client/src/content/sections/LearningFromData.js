@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Heading, Box, Button, Flex, Tooltip } from '@chakra-ui/react'
-import { Emoji, P, Float, InfoBlock } from '../../components/layout'
+import { Heading, Box, Button, Flex } from '@chakra-ui/react'
+import { Emoji, P, Float, InfoBlock, Tooltip } from '../../components/layout'
 import { Scatter2D, Line2D, Slab } from '../../components/graphs'
 
 const Predictions = props => {
@@ -45,7 +45,7 @@ const Predictions = props => {
           }
         </Button>
       </Flex>
-      <P>The thing we just did—finding the thickest slab which separates two classes of points—is actually one of the most commonly used machine learning models! <strong>It&apos;s called a <Tooltip label='&quot;Support vector&quot; is a term used to describe points on the edge of the slab, like the two orange-colored points and one teal point in the example above.'><Button>support vector machine.</Button></Tooltip>.</strong></P>
+      <P>The thing we just did—finding the thickest slab which separates two classes of points—is actually one of the most commonly used machine learning models! <strong>It&apos;s called a <Tooltip label='&quot;Support vector&quot; is a term used to describe points on the edge of the slab, like the two orange-colored points and one teal point in the example above.'><u>support vector machine.</u></Tooltip></strong></P>
       <P>You might guess that this particular support vector machine, which looks at only two pixels, isn&apos;t very useful if we have 480,000 pixels in our whole image that are available to make predictions. You&apos;d be right.</P>
       <P>But that&apos;s because it&apos;s only looking at two pixels. If we look at three pixel values, we&apos;d get points in three-dimensional space, and those points could be separated with— you guessed it— a three-dimensional plane!</P>
     </Box>
