@@ -23,6 +23,7 @@ const Predictions = props => {
       <><Emoji symbol='🤔' label='thinking face'/> Well, the number is smaller than 8388608, so our rule says we should give 0 as output.</>
     </Quiz>
 
+    <br/>
     <P>Great! Now I&apos;m wondering, what do you think about this rule? Is it practical for the task we&apos;re trying to accomplish?</P>
     <Quiz>
       <>It seems overly simplistic to a somewhat ridiculous extent</>
