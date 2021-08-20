@@ -58,8 +58,9 @@ function App () {
           <P>Incidentally, one way to get there without having to rely on luck is to adjust one handle at a time: we move one of the two ends up and down to get the orange area as low as possible. Then we drag the other dot to get the area even lower. Then back to the first dot, and so on, back and forth. Pretty soon we&apos;ll get it to a point where the orange area isn&apos;t decreasing anymore, and then we can declare victory!</P>
           <P>Let&apos;s try it again, this time on a 3D plane instead of 2D. Drag the sliders on the left side to transform the gray plane, and see how small you can get the orange area!</P>
           <Box m='auto' w='95%'>
-            <Graph3D dehydrated={graphs.volumemin} drawer aspectRatio={16 / 9}/>
+            <Graph3D dev dehydrated={graphs.volumemin} drawer aspectRatio={16 / 9}/>
           </Box>
+          <br/>
           <P>Just like that, you&apos;ve already learned your first machine learning idea! By dragging the line into place one end at a time, you&apos;ve carried out an optimization algorithm called <strong>coordinate descent</strong>. Making adjustments to try to minimize some undesirable quantity (like the orange area in the mathlet) is a major theme in machine learning. You&apos;re well on your way at this point, even though we still need to talk about what machine learning is.</P>
         </Box>
       </Box>
@@ -101,8 +102,8 @@ function App () {
         <P>Suppose the pixel we are checking is the one here, highlighted in blue, and that its numerical value is 4313. Based on the rule we defined, we would return a...</P>
 
         <Quiz>
-          <>0, for no pedestrian <Emoji>🚷</Emoji></>
-          <>1, for pedestrian <Emoji>🚶</Emoji></>
+          <>0, for no pedestrian <Emoji symbol='🚷' label='no pedestrian'/></>
+          <>1, for pedestrian <Emoji symbol='🚶' label='walking'/></>
           <><Emoji symbol='✅' label='green check mark'/> Exactly, the number is smaller than 8388608, so our rule says we should give 0 as an output.</>
           <><Emoji symbol='🤔' label='thinking face'/> Well, the number is smaller than 8388608, so our rule says we should give 0 as output.</>
         </Quiz>
@@ -132,9 +133,9 @@ function App () {
 
       <Box>
         <P>Here&apos;s a <strong>single point</strong> on a <strong>number line:</strong></P>
-        <Image loading='lazy' w={{ base: '90%', md: '70%' }} m='auto' src='/assets/line.svg'/>
+        <Image loading='lazy' w={{ base: '90%', md: '70%' }} maxW={400} m='auto' src='/assets/line.svg'/>
         <P style={{ marginTop: '2rem', width: '95%' }}>And here is a <strong>pair of numbers</strong> on a <strong>plane.</strong> We call the values 2 and 3 the coordinates of the point <strong>(2, 3).</strong></P>
-        <Image loading='lazy' w={{ base: '90%', sm: '70%', md: '50%' }} m='auto' mb='10' src='/assets/plane.svg'/>
+        <Image loading='lazy' w={{ base: '90%', sm: '70%', md: '50%' }} maxW={300} m='auto' mb='10' src='/assets/plane.svg'/>
 
         <P>Because this geometric connection between pixel colors and points in the plane is so important to the story, let&apos;s make it really tangible. You can control the colors of the two pixels in this mathlet by dragging the point around in the square on the right.</P>
         <br/>
@@ -210,7 +211,7 @@ function App () {
           <><Emoji symbol='🤔' label='thinking face'/> Not quite. The line is where <Eq>2x+3y=6</Eq> is equal to 6, and on one side it will be greater and on the other side less.</>
         </Quiz>
 
-        <P>So, mathematically, the search for a separating line is equivalent to a search for an expression like <Eq>{'2x+3y=6'}</Eq> which happens to be larger than a certain value (6, say) for all teal points and smaller that value for all tomato-colored points.</P>
+        <P>So, mathematically, the search for a separating line is equivalent to a search for an expression like <Eq>{'2x+3y'}</Eq> which happens to be larger than a certain value (6, say) for all teal points and smaller that value for all tomato-colored points.</P>
         <P>Likewise, the equation for a separating plane in three dimensions might be something that looks like:</P>
         <Center mb='4' style={{ fontSize: '1.5rem' }}><Eq>2x+3y+6z=12</Eq></Center>
         <P>in which case the <Eq>2x+3y+6z</Eq> value for each teal point would be greater than 12 and for each tomato point would be less than 12.</P>

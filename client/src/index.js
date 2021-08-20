@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom'
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route
+// } from 'react-router-dom'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
@@ -17,13 +17,7 @@ addStyles()
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-      <Router>
-        <Switch>
-          <Route path='/'>
-            <App />
-          </Route>
-        </Switch>
-      </Router>
+      <App />
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root')

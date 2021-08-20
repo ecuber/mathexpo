@@ -1,7 +1,10 @@
 import React, { Suspense } from 'react'
 import PropTypes from 'prop-types'
-import { AspectRatio } from '@chakra-ui/layout'
-import { Placeholder } from '../../layout'
+import { AspectRatio, Box } from '@chakra-ui/layout'
+import { Emoji, Placeholder } from '../../layout'
+import { ErrorBoundary } from 'react-error-boundary'
+import InfoBlock from '../../layout/components/InfoBlock'
+import { Button } from '@chakra-ui/react'
 
 const Math3D = React.lazy(() => import('math3d-component'))
 
@@ -21,10 +24,25 @@ const saveGraph = (dehydrated) => {
     })
 }
 
+const BoundaryFallback = ({ resetErrorBoundary }) => (
+  <>
+  <Box display='block' w='100%'>
+    <InfoBlock style={{ margin: 'auto' }}><Emoji symbol='❌' label='red x'/> Something went wrong.</InfoBlock>
+    <Button m='auto' onClick={resetErrorBoundary}>Reset Graph</Button>
+  </Box>
+  </>
+)
+
+BoundaryFallback.propTypes = {
+  resetErrorBoundary: PropTypes.func
+}
+
 const Graph3D = (props) => {
   return <AspectRatio maxW='100%' ratio={props.aspectRatio ?? 5 / 4} m={4}>
     <Suspense fallback={<Placeholder/>}>
-      <Math3D {...props} save={saveGraph}/>
+      <ErrorBoundary FallbackComponent={BoundaryFallback}>
+        <Math3D {...props} save={saveGraph}/>
+      </ErrorBoundary>
     </Suspense>
   </AspectRatio>
 }
