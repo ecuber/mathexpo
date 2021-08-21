@@ -20,11 +20,11 @@ const Predictions = props => {
 
       <Heading as='h3' size='lg'>Separating Lines</Heading>
       <p>Alright, now back to our 8 training points. When you first saw those points, your visual cortex probably couldn&apos;t resist mentally separating the two groups using a line. Drag the two points on the dark blue line such that all of the teal points are on one side and all of the orange-colored points are on the other side.</p>
-      <Box m='auto' w={{ base: '90%', sm: '70%', md: '50%' }}>
+      <Box m='auto' w={{ base: '95%', sm: '70%', md: '50%' }}>
         <Line2D solution={solution1}/>
       </Box>
       <Flex dir='row' justifyContent='center' my={8}>
-          <Button shadow='lg' size='lg' fontSize='xl' m={{ base: '0 auto', md: '0 2 0 0' }} onClick={() => setSolution1(!solution1)}>
+          <Button shadow='md' size='lg' fontSize={['md', 'xl']} m={{ base: '0 auto', md: '0 2 0 0' }} onClick={() => setSolution1(!solution1)}>
             {!solution1
               ? 'Show a possible solution'
               : 'Restore default setup'
@@ -34,11 +34,11 @@ const Predictions = props => {
       <p>As you may have noticed, there are many lines that would separate the points correctly based on these criteria; we might as well pick a good one! Consider this question: what would be a good way of determining which separating line is &quot;better&quot; than the others?</p>
       <p>Here&apos;s an idea: let&apos;s thicken the line into a slab, and look for the thickest slab that still separates the points. This should be a bit more accurate for points closer to the line!</p>
       <InfoBlock><Emoji symbol='💡' label='lightbulb'/> <strong>Helpful Tip:</strong> In this mathlet, drag the arrow around to shift the whole slab, and drag the points to make it thicker, thinner, or to rotate the slab.</InfoBlock>
-      <Box m='auto' w={{ base: '90%', sm: '70%', md: '50%' }}>
+      <Box m='auto' w={{ base: '95%', sm: '70%', md: '50%' }}>
         <Slab solution={solution2}/>
       </Box>
       <Flex dir='row' justifyContent='center' my={8}>
-        <Button shadow='lg' size='lg' fontSize='xl' m={{ base: '0 auto', md: '0 2 0 0' }} onClick={() => setSolution2(!solution2)}>
+        <Button shadow='md' size='lg' fontSize={['md', 'xl']} m={{ base: '0 1 0 0', md: '0 2 0 0' }} onClick={() => setSolution2(!solution2)}>
           {!solution2
             ? 'Show best solution'
             : 'Restore default setup'

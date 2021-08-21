@@ -7,7 +7,10 @@ const Cap = styled.p`
   color: #a3a3a3;
   font-family: Ubuntu Mono, monospace;
   margin: 0 auto;
-  white-space: nowrap;
+  min-width: 100%;
+  white-space: break-spaces;
+  overflow-wrap: auto;
+  text-align: center;
   width: min-content;
 `
 

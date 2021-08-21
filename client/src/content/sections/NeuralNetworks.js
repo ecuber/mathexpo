@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Heading, Button, chakra, Center } from '@chakra-ui/react'
-import { Emoji, Float, Quiz } from '../../components/layout'
+import { Caption, Emoji, Float, Quiz } from '../../components/layout'
 import { ScatterNN, Folding, Semi, Plot } from '../../components/graphs'
 
 const NeuralNetworks = props => {
   const [semi, setSemi] = useState(false)
+  const [solution, setSolution] = useState(false)
   return <>
     <p>While support vector machines work a lot better than nothing on image recognition tasks like identifying pedestrians, they&apos;re not good enough for real self-driving vehicle technology.</p>
     <p>To think about why this is the case, imagine a slightly different dataset. </p>
@@ -21,8 +22,10 @@ const NeuralNetworks = props => {
     <p>We should be able to separate these points, just <em>not with a line.</em> We would want to use a <em>curve</em> instead, perhaps one which encircles the teal points in the middle.</p>
     <p>It shouldn&apos;t be surprising that this kind of situation comes up in practice a lot, because there&apos;s nothing all that special about lines and planes. It could very well happen that the data from each class (pedestrian/non-pedestrian) tend to show up in particular regions in the space of images, but that those regions happen to be entangled from the point of a view of a separating line/plane.</p>
     <p>If we&apos;re going to overcome the &quot;flatness&quot; limitation of lines and planes, we&apos;ll need the ability to <em>morph</em> or <em>fold</em> space somehow.</p>
-    <Float dir='right'>
-      <Folding/>
+    <Float mb={0} dir='right'>
+      <Folding solution={solution}/>
+      <Caption>Try dragging the gray line <strong>before</strong> revealing a solution!</Caption>
+      <Center mt={1}><Button shadow='md' size='md' mt={1} mb={0} onClick={() => setSolution(!solution)}>{!solution ? 'Show a possible solution' : 'Restore default setup'}</Button></Center>
     </Float>
     <p>For example, perhaps the simplest way to fold space is to choose a line and <strong>reflect every point which is below it.</strong> Try dragging the <strong>gray</strong> line in such a way that the classes of points would be <strong>readily separable</strong> by a second line (the dark blue one).</p>
     <p>Being able to use these two lines in tandem gives us a lot more flexibility.</p>
@@ -36,7 +39,7 @@ const NeuralNetworks = props => {
     <p>One popular space-morphing action is <em>to make the coordinate axes sticky.</em> This might seem strange, but actually it tends to work quite well.</p>
     <Float dir='right'>
       <Semi rerender={semi}/>
-      <Center><Button size='md' onClick={() => setSemi(!semi)}>Reset</Button></Center>
+      <Center><Button shadow='md' size='md' onClick={() => setSemi(!semi)}>Reset</Button></Center>
     </Float>
     <p>Consider the following problem, where we&apos;re trying to classify every point inside the semicircle as yellow, and every point outside as purple. </p>
     <p>To accomplish this feat, we&apos;re allowed to <em>linearly</em> transform the points however we want (rotate/scale/translate/etc). </p>
@@ -62,7 +65,7 @@ const NeuralNetworks = props => {
       <><Emoji symbol='✅' label='green check mark'/> Yes, there are still a few tomato-colored points above the surface.</>
       <><Emoji symbol='🤔' label='thinking face'/> If you look closely, you&apos;ll find that there are still a few tomato-colored points above the surface.</>
     </Quiz>
-    <p>The decision surface has sharp creases, just like the decision boundary in the two-dimensional case has sharp corners. Nevertheless, the model has enough flexibility to use its flat facets to mold to the data and separate out the points quite nicely.</p>
+    <p>The decision surface has sharp creases, just like the decision boundary in the two-dimensional case has sharp edges. Nevertheless, the model has enough flexibility to use its flat facets to mold to the data and separate out the points quite nicely.</p>
     <p>This picture perfectly encapsulates one aspect of what makes neural networks so powerful: in many real data problems, the points from the two classes are somewhat entangled, but not hopelessly so. Neural networks have the flexibility to produce decision surfaces of pretty much any shape, and the training process often does allow suitable shapes to form.</p>
   </>
 }

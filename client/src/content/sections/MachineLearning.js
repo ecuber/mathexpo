@@ -16,7 +16,7 @@ const MachineLearning = props => {
       </Float>
       <p><strong>Notice how the orange area changes as you move the points; </strong>try to adjust the line by dragging the white points around and try to minimize the total orange area! What&apos;s the lowest value you can get?</p>
       <Flex dir='row' justifyContent='center' my={8}>
-        <Button shadow='lg' size='lg' fontSize='xl' m={{ base: '0 auto', md: '0 2 0 0' }} onClick={() => setSolution0(!solution0)}>
+        <Button shadow='md' size='lg' fontSize='xl' m={{ base: '0 auto', md: '0 2 0 0' }} onClick={() => setSolution0(!solution0)}>
           {!solution0
             ? 'Reveal best solution'
             : 'Restore default setup'

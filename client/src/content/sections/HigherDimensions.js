@@ -39,7 +39,7 @@ const HigherDimensions = props => {
     <Center mb='4' style={{ fontSize: '1.5rem' }}><Eq>−w+3x−2y+4.5z=1</Eq></Center>
     <p>where the left-hand side is smaller for each point <Eq>(w,\space x,\space y,\space z)</Eq> that corresponds to a pedestrian-containing image, and where the left-hand side is greater for the rest of the images.</p>
     <p>Of course, for the practical problem, four pixels is not really all that much better than 1. But the key thing now is that we&apos;re no long limited in how many pixels we can consider.</p>
-    <p>What we&apos;re really looking for is <em>480,000</em> numbers that we can multiply in pairs with the actual 480,000 pixel values and add, yielding larger values for pedestrian-containing images and smaller values for the others.</p>
+    <p>What we&apos;re really looking for is <em>480,000</em> numbers that we can multiply in pairs with the actual 480,000 pixel values and add up, yielding larger values for pedestrian-containing images and smaller values for the others.</p>
   </>
 }
 

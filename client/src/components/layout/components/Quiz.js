@@ -20,7 +20,7 @@ const Quiz = props => {
           display='inline-block'
           fontSize='1.1rem'
           whiteSpace='break-spaces'
-          shadow='lg'
+          shadow='md'
           _hover={{
             backgroundColor: selection === i ? '#606275' : '#E4E9ED'
           }}

@@ -28,7 +28,7 @@ const BoundaryFallback = ({ resetErrorBoundary }) => (
   <>
   <Box display='block' w='100%'>
     <InfoBlock style={{ margin: 'auto' }}><Emoji symbol='❌' label='red x'/> Something went wrong.</InfoBlock>
-    <Button m='auto' onClick={resetErrorBoundary}>Reset Graph</Button>
+    <Button shadow='md' m='auto' onClick={resetErrorBoundary}>Reset Graph</Button>
   </Box>
   </>
 )
