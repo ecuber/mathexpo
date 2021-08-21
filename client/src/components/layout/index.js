@@ -1,5 +1,4 @@
 import Header from './components/Header'
-import P from './components/P'
 import Subtitle from './components/Subtitle'
 import Float from './components/Float'
 import Caption from './components/Caption'
@@ -9,4 +8,4 @@ import Placeholder from './components/Placeholder'
 import InfoBlock from './components/InfoBlock'
 import Tooltip from './components/Tooltip'
 
-export { Header, P, Subtitle, Float, Caption, Quiz, Emoji, Placeholder, InfoBlock, Tooltip }
+export { Header, Subtitle, Float, Caption, Quiz, Emoji, Placeholder, InfoBlock, Tooltip }

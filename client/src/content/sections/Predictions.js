@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Heading, Image, Box, Center, Button } from '@chakra-ui/react'
-import { Emoji, P, Float, Caption, Quiz } from '../../components/layout'
+import { Emoji, Float, Caption, Quiz } from '../../components/layout'
 import { TwoPixel } from '../../components/graphs'
 
 const Predictions = props => {
@@ -8,13 +8,13 @@ const Predictions = props => {
 
   return <>
     <Heading size='lg'>Making Predictions</Heading>
-    <P>So in order to determine whether there&apos;s a pedestrian in the crosswalk, we&apos;ll need to somehow process all 480,000 numbers to generate a useful output. In this case, it would be useful to produce a number: either a 0 (to indicate no pedestrian) or a 1 (for one or more pedestrians).</P>
-    <P>There are endless ways to manipulate the grid of numbers that represents the image in order to get out that 0 or 1, but let&apos;s try this: look at <strong>a single, specific pixel somewhere in the image,</strong> and if its value is bigger than, say, 8388608, give an output of 1. If it&apos;s smaller, give an output of 0.</P>
+    <p>So in order to determine whether there&apos;s a pedestrian in the crosswalk, we&apos;ll need to somehow process all 480,000 numbers to generate a useful output. In this case, it would be useful to produce a number: either a 0 (to indicate no pedestrian) or a 1 (for one or more pedestrians).</p>
+    <p>There are endless ways to manipulate the grid of numbers that represents the image in order to get out that 0 or 1, but let&apos;s try this: look at <strong>a single, specific pixel somewhere in the image,</strong> and if its value is bigger than, say, 8388608, give an output of 1. If it&apos;s smaller, give an output of 0.</p>
     <Float dir='right'>
       <Image loading='lazy' src='/assets/highlighted.png'/>
       <Caption>This is the pixel in question!</Caption>
     </Float>
-    <P>Suppose the pixel we are checking is the one here, highlighted in blue, and that its numerical value is 4313. Based on the rule we defined, we would return a...</P>
+    <p>Suppose the pixel we are checking is the one here, highlighted in blue, and that its numerical value is 4313. Based on the rule we defined, we would return a...</p>
 
     <Quiz>
       <>0, for no pedestrian <Emoji symbol='🚷' label='no pedestrian'/></>
@@ -24,7 +24,7 @@ const Predictions = props => {
     </Quiz>
 
     <br/>
-    <P>Great! Now I&apos;m wondering, what do you think about this rule? Is it practical for the task we&apos;re trying to accomplish?</P>
+    <p>Great! Now I&apos;m wondering, what do you think about this rule? Is it practical for the task we&apos;re trying to accomplish?</p>
     <Quiz>
       <>It seems overly simplistic to a somewhat ridiculous extent</>
       <>I think it would work</>
@@ -32,8 +32,8 @@ const Predictions = props => {
       <><Emoji symbol='🤔' label='thinking face'/> It turns out you&apos;re going to need to account for more than one pixel in order to do this task effectively.</>
     </Quiz>
     <Box>
-      <P>Even though this rule seems entirely useless, it&apos;s actually an excellent starting point. We&apos;re going to modify it, one step at a time, to work our way towards actual state-of-the-art methods used for this kind of problem.</P>
-      <P>Here&apos;s the key idea: one pixel isn&apos;t very useful on its own, but what about two pixels? Instead of a single number, we&apos;ll now have a pair of numbers. And <strong>a pair of numbers can be naturally represented as a point on a...</strong></P>
+      <p>Even though this rule seems entirely useless, it&apos;s actually an excellent starting point. We&apos;re going to modify it, one step at a time, to work our way towards actual state-of-the-art methods used for this kind of problem.</p>
+      <p>Here&apos;s the key idea: one pixel isn&apos;t very useful on its own, but what about two pixels? Instead of a single number, we&apos;ll now have a pair of numbers. And <strong>a pair of numbers can be naturally represented as a point on a...</strong></p>
     </Box>
     <Quiz>
       <>plane</>
@@ -45,21 +45,21 @@ const Predictions = props => {
     </Quiz>
 
     <Box>
-      <P>Here&apos;s a <strong>single point</strong> on a <strong>number line:</strong></P>
+      <p>Here&apos;s a <strong>single point</strong> on a <strong>number line:</strong></p>
       <Image loading='lazy' w={{ base: '90%', md: '70%' }} maxW={400} m='auto' src='/assets/line.svg'/>
-      <P style={{ marginTop: '2rem', width: '95%' }}>And here is a <strong>pair of numbers</strong> on a <strong>plane.</strong> We call the values 2 and 3 the coordinates of the point <strong>(2, 3).</strong></P>
+      <p style={{ marginTop: '2rem', width: '95%' }}>And here is a <strong>pair of numbers</strong> on a <strong>plane.</strong> We call the values 2 and 3 the coordinates of the point <strong>(2, 3).</strong></p>
       <Image loading='lazy' w={{ base: '90%', sm: '70%', md: '50%' }} maxW={300} m='auto' mb='10' src='/assets/plane.svg'/>
 
-      <P>Because this geometric connection between pixel colors and points in the plane is so important to the story, let&apos;s make it really tangible. You can control the colors of the two pixels in this mathlet by dragging the point around in the square on the right.</P>
+      <p>Because this geometric connection between pixel colors and points in the plane is so important to the story, let&apos;s make it really tangible. You can control the colors of the two pixels in this mathlet by dragging the point around in the square on the right.</p>
       <br/>
       <Float dir='right'>
         <TwoPixel diagonal={showDiagonal}/>
         <Center><Button size='md' mt={1} mb={0} onClick={() => setShowDiagonal(!showDiagonal)}>{showDiagonal ? 'Hide Diagonal' : 'Show Diagonal'}</Button></Center>
       </Float>
-      <P>For convenience, we&apos;re showing plotting the pixel-representing numbers on a scale from 0 to 1, rather than from 0 to 16777215.</P>
-      <P>Notice that if we move the point in a direction parallel to one of the axes, we can keep one color constant. For example, <strong>if we move the point horizontally,</strong> its second coordinate stays the same, while the first coordinate changes, changing the color of the first pixel.</P>
-      <P>Notice also that the points along the diagonal (the line that connects (0, 0) and (1, 1)) have the property that the two pixel colors are the same.</P>
-      <P>Now, the cool thing about looking at two pixels instead of one is that it gives us a lot more information to work with to try to separate out pedestrian-containing images from non-pedestrian-containing images. Let&apos;s see how we do that!</P>
+      <p>For convenience, we&apos;re showing plotting the pixel-representing numbers on a scale from 0 to 1, rather than from 0 to 16777215.</p>
+      <p>Notice that if we move the point in a direction parallel to one of the axes, we can keep one color constant. For example, <strong>if we move the point horizontally,</strong> its second coordinate stays the same, while the first coordinate changes, changing the color of the first pixel.</p>
+      <p>Notice also that the points along the diagonal (the line that connects (0, 0) and (1, 1)) have the property that the two pixel colors are the same.</p>
+      <p>Now, the cool thing about looking at two pixels instead of one is that it gives us a lot more information to work with to try to separate out pedestrian-containing images from non-pedestrian-containing images. Let&apos;s see how we do that!</p>
     </Box>
   </>
 }

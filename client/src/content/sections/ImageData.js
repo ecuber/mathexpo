@@ -1,16 +1,16 @@
 import React from 'react'
 import { Box, Heading, Image } from '@chakra-ui/react'
-import { Emoji, P, Float, Caption, Quiz } from '../../components/layout'
+import { Emoji, Float, Caption, Quiz } from '../../components/layout'
 
 const ImageData = props => {
   return <>
     <Heading>Image Data</Heading>
-    <P>Suppose you want a computer to accomplish a complex task, such as recognizing a pedestrian in a self-driving car&apos;s camera feed.</P>
+    <p>Suppose you want a computer to accomplish a complex task, such as recognizing a pedestrian in a self-driving car&apos;s camera feed.</p>
     <Box w='100%' mb={5}>
       <Image mx='auto' w={{ base: '90%', lg: '50%' }} loading='lazy' src='/assets/pedestrian.jpeg'/>
       <Caption>Pedestrian near a crosswalk</Caption>
     </Box>
-    <P>Which most accurately describes how a computer would &quot;perceive&quot; this image?</P>
+    <p>Which most accurately describes how a computer would &quot;perceive&quot; this image?</p>
     <Quiz placeholder={2}>
       <>Through conscious experience like a human</>
       <>Through brushstrokes like a painting</>
@@ -23,9 +23,9 @@ const ImageData = props => {
       <Image mx='auto' loading='lazy' src='/assets/zoom.gif'/>
       <Caption>Look at those pixels</Caption>
     </Float>
-    <P>You probably don&apos;t notice it when the photo is zoomed out, but let&apos;s take a closer look at the little squares that comprise the image. We&apos;ll zoom in on the corner of the crosswalk stripe.</P>
-    <P>Internally, each little square (or pixel) is stored as a number (specifically, a number between 0 and 16777215) and the computer knows how present that number as a color on your monitor.</P>
-    <P>This particular image is 800 pixels wide by 600 pixels tall, for a total of 480,000 pixels.</P>
+    <p>You probably don&apos;t notice it when the photo is zoomed out, but let&apos;s take a closer look at the little squares that comprise the image. We&apos;ll zoom in on the corner of the crosswalk stripe.</p>
+    <p>Internally, each little square (or pixel) is stored as a number (specifically, a number between 0 and 16777215) and the computer knows how present that number as a color on your monitor.</p>
+    <p>This particular image is 800 pixels wide by 600 pixels tall, for a total of 480,000 pixels.</p>
     <br/>
   </>
 }
