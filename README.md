@@ -16,5 +16,9 @@ The site is hosted at http://beautifuldatascience.com.
 * [math3d-component](https://github.com/ecuber/math3d-component/tree/master/client)
   * This component was developed for this project. It is a componentization of the fantastic [math3d.org](https://www.math3d.org/) graphing calculator. Check out [the repository](https://github.com/ecuber/math3d-component/tree/master/client) to see documentation on how you can use it in your own project!
 
+## Repository Anatomy
+* <b>`/client/`</b> - contains the create-react-app setup; client side code that renders the website.
+* <b>`/dev-server/`</b> - contains the Node.js web server that runs in parallel with the CRA dev server while creating new Math3D graphs. This allows the Math3D scenes to be saved to a JSON file, forgoing the need for a database.
+
 ## License
 This project is distrubuted under the [MIT License](https://choosealicense.com/licenses/mit/).
