@@ -17,4 +17,4 @@ The site is hosted at http://beautifuldatascience.com.
   * This component was developed for this project. It is a componentization of the fantastic [math3d.org](https://www.math3d.org/) graphing calculator. Check out [the repository](https://github.com/ecuber/math3d-component/tree/master/client) to see documentation on how you can use it in your own project!
 
 ## License
-This project is distrubuted under the MIT license.
+This project is distrubuted under the [MIT License](https://choosealicense.com/licenses/mit/).
