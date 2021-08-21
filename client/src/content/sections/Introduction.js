@@ -10,7 +10,7 @@ const Introduction = props => (
   </Box>
   <Box>
     <Float dir='right'>
-      <Image mb={{ base: '5', md: 0 }} loading='eager' src='/assets/terminator.jpg'/>
+      <Image alt='terminator' mb={{ base: '5', md: 0 }} loading='eager' src='/assets/terminator.jpg'/>
     </Float>
     <p>For most, the words &quot;artificial intelligence&quot; and evoke images of the Terminator and robot armies taking over the world. While we haven&apos;t reached that point (yet), <strong>machine learning</strong>, a subset of modern AI, has become ubiquitous in the tech industry and data science field.</p>
     <p>Pop culture and media tend to depict machine learning (generally abbreviated as ML) as a mystical branch of computer science that only the most talented programmers and mathematicians are capable of comprehending. While that may have been true decades ago, the barrier to entry in 2021 has fallen dramatically. </p>

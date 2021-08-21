@@ -7,7 +7,7 @@ const ImageData = props => {
     <Heading>Image Data</Heading>
     <p>Suppose you want a computer to accomplish a complex task, such as recognizing a pedestrian in a self-driving car&apos;s camera feed.</p>
     <Box w='100%' mb={5}>
-      <Image mx='auto' w={{ base: '90%', lg: '50%' }} loading='lazy' src='/assets/pedestrian.jpeg'/>
+      <Image mx='auto' w={{ base: '90%', lg: '50%' }} loading='lazy' alt='pedestrian in crosswalk' src='/assets/pedestrian.jpeg'/>
       <Caption>Pedestrian near a crosswalk</Caption>
     </Box>
     <p>Which most accurately describes how a computer would &quot;perceive&quot; this image?</p>
@@ -20,7 +20,7 @@ const ImageData = props => {
       <><Emoji symbol='✅' label='green check mark'/> Yep. Pictures taken by digital cameras are stored as <strong>a grid of color values.</strong></>
     </Quiz>
     <Float dir='right'>
-      <Image mx='auto' loading='lazy' src='/assets/zoom.gif'/>
+      <Image mx='auto' alt='closer look at pixels in image' loading='lazy' src='/assets/zoom.gif'/>
       <Caption>Look at those pixels</Caption>
     </Float>
     <p>You probably don&apos;t notice it when the photo is zoomed out, but let&apos;s take a closer look at the little squares that comprise the image. We&apos;ll zoom in on the corner of the crosswalk stripe.</p>

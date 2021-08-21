@@ -11,7 +11,7 @@ const Predictions = props => {
     <p>So in order to determine whether there&apos;s a pedestrian in the crosswalk, we&apos;ll need to somehow process all 480,000 numbers to generate a useful output. In this case, it would be useful to produce a number: either a 0 (to indicate no pedestrian) or a 1 (for one or more pedestrians).</p>
     <p>There are endless ways to manipulate the grid of numbers that represents the image in order to get out that 0 or 1, but let&apos;s try this: look at <strong>a single, specific pixel somewhere in the image,</strong> and if its value is bigger than, say, 8388608, give an output of 1. If it&apos;s smaller, give an output of 0.</p>
     <Float dir='right'>
-      <Image loading='lazy' src='/assets/highlighted.png'/>
+      <Image alt={'the pixel we\'re referring to'} loading='lazy' src='/assets/highlighted.png'/>
       <Caption>This is the pixel in question!</Caption>
     </Float>
     <p>Suppose the pixel we are checking is the one here, highlighted in blue, and that its numerical value is 4313. Based on the rule we defined, we would return a...</p>
@@ -46,9 +46,9 @@ const Predictions = props => {
 
     <Box>
       <p>Here&apos;s a <strong>single point</strong> on a <strong>number line:</strong></p>
-      <Image loading='lazy' w={{ base: '90%', md: '70%' }} maxW={400} m='auto' src='/assets/line.svg'/>
+      <Image alt='number line with the 1.5 plotted on it' loading='lazy' w={{ base: '90%', md: '70%' }} maxW={400} m='auto' src='/assets/line.svg'/>
       <p style={{ marginTop: '2rem', width: '95%' }}>And here is a <strong>pair of numbers</strong> on a <strong>plane.</strong> We call the values 2 and 3 the coordinates of the point <strong>(2, 3).</strong></p>
-      <Image loading='lazy' w={{ base: '90%', sm: '70%', md: '50%' }} maxW={300} m='auto' mb='10' src='/assets/plane.svg'/>
+      <Image alt='x y plane with with the point (2, 3) plotted on it' loading='lazy' w={{ base: '90%', sm: '70%', md: '50%' }} maxW={300} m='auto' mb='10' src='/assets/plane.svg'/>
 
       <p>Because this geometric connection between pixel colors and points in the plane is so important to the story, let&apos;s make it really tangible. You can control the colors of the two pixels in this mathlet by dragging the point around in the square on the right.</p>
       <br/>
