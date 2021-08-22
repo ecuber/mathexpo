@@ -14,10 +14,10 @@ const NeuralNetworks = props => {
     </Float>
     <p>These points...</p>
     <Quiz>
-      <>can&apos;t be separated by a line</>
       <>don&apos;t seem to show any patterns at all</>
-      <><Emoji symbol='✅' label='green check mark'/> Exactly. There is no separating line. However, the teal ones do seem to be in the middle and the tomato ones near the edges.</>
+      <>can&apos;t be separated by a line</>
       <><Emoji symbol='🤔' label='thinking face'/> Well, the teal ones do seem to be in the middle and the tomato ones near the edges.</>
+      <><Emoji symbol='✅' label='green check mark'/> Exactly. There is no separating line. However, the teal ones do seem to be in the middle and the tomato ones near the edges.</>
     </Quiz>
     <p>We should be able to separate these points, just <em>not with a line.</em> We would want to use a <em>curve</em> instead, perhaps one which encircles the teal points in the middle.</p>
     <p>It shouldn&apos;t be surprising that this kind of situation comes up in practice a lot, because there&apos;s nothing all that special about lines and planes. It could very well happen that the data from each class (pedestrian/non-pedestrian) tend to show up in particular regions in the space of images, but that those regions happen to be entangled from the point of a view of a separating line/plane.</p>

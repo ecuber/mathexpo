@@ -17,11 +17,11 @@ const HigherDimensions = props => {
     <p>This means that a point is on the line if twice its first coordinate plus three times its second coordinate is equal to 6.</p>
     <p>Then we can tell which side of this line a particular point (x, y) is on by checking...</p>
 
-    <Quiz>
-      <>whether 2x + 3y is bigger or smaller than 6</>
+    <Quiz placeholder={1}>
       <>whether 2x + 3y is positive or negative</>
-      <><Emoji symbol='✅' label='green check mark'/> Exactly. The line is where <Eq>2x+3y=6</Eq> is equal to 6, and on one side it will be greater and on the other side less.</>
+      <>whether 2x + 3y is bigger or smaller than 6</>
       <><Emoji symbol='🤔' label='thinking face'/> Not quite. The line is where <Eq>2x+3y=6</Eq> is equal to 6, and on one side it will be greater and on the other side less.</>
+      <><Emoji symbol='✅' label='green check mark'/> Exactly. The line is where <Eq>2x+3y=6</Eq> is equal to 6, and on one side it will be greater and on the other side less.</>
     </Quiz>
 
     <p>So, mathematically, the search for a separating line is equivalent to a search for an expression like <Eq>{'2x+3y'}</Eq> which happens to be larger than a certain value (6, say) for all teal points and smaller that value for all tomato-colored points.</p>
