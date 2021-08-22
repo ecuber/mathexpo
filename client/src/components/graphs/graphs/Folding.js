@@ -106,8 +106,8 @@ separatingline = line(PP1, QQ1) svmhandle;
 
 handle = <<color: 'gray', withLabel: false>>;
 
-PP = point(0.32, 0.30) handle;
-QQ = point(0.85, 0.48) handle;
+PP = point(0.29, 0.35) handle;
+QQ = point(0.85, 0.44) handle;
 reflectionline = line(PP, QQ) handle; 
 
 // axes
