@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 const InfoBlock = styled.p`
 margin-top: 1rem;

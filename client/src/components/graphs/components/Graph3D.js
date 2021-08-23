@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import PropTypes from 'prop-types'
-import { AspectRatio, Box } from '@chakra-ui/layout'
+import { AspectRatio } from '@chakra-ui/layout'
 import { Emoji, Placeholder } from '../../layout'
 import { ErrorBoundary } from 'react-error-boundary'
 import InfoBlock from '../../layout/components/InfoBlock'
@@ -26,10 +26,10 @@ const saveGraph = (dehydrated) => {
 
 const BoundaryFallback = ({ resetErrorBoundary }) => (
   <>
-  <Box display='block' w='100%'>
+  <div style={{ display: 'block', width: '100%' }}>
     <InfoBlock style={{ margin: 'auto' }}><Emoji symbol='❌' label='red x'/> Something went wrong.</InfoBlock>
     <Button shadow='md' m='auto' onClick={resetErrorBoundary}>Reset Graph</Button>
-  </Box>
+  </div>
   </>
 )
 

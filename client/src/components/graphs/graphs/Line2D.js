@@ -109,7 +109,7 @@ const Line2D = props => {
     setRerenders(rerenders + 1)
   }, [props.solution])
 
-  return <Graph2D key={rerenders} logic={props.solution ? solution : initial} aspectRatio={1}/>
+  return <Graph2D jessieCode key={rerenders} logic={props.solution ? solution : initial} aspectRatio={1}/>
 }
 
 Line2D.propTypes = {

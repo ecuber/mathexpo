@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes, { string } from 'prop-types'
 import { chakra, Container, Heading } from '@chakra-ui/react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 const rest = {
   Heading: {

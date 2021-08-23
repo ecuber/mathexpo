@@ -182,7 +182,7 @@ const Folding = props => {
     setRerenders(rerenders + 1)
   }, [props.solution])
 
-  return <Graph2D key={rerenders} logic={props.solution ? solution : logic} aspectRatio={1}/>
+  return <Graph2D jessieCode key={rerenders} logic={props.solution ? solution : logic} aspectRatio={1}/>
 }
 
 Folding.propTypes = {

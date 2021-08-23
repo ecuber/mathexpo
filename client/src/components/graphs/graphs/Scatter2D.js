@@ -50,6 +50,6 @@ colorFunc = function(t) {
 };
 `
 
-const Scatter2D = props => <Graph2D logic={initial} aspectRatio={1}/>
+const Scatter2D = props => <Graph2D jessieCode logic={initial} aspectRatio={1}/>
 
 export default Scatter2D
