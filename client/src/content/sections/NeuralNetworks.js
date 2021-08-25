@@ -13,7 +13,7 @@ const NeuralNetworks = props => {
       <ScatterNN/>
     </Float>
     <p>These points...</p>
-    <Quiz>
+    <Quiz placeholder={1}>
       <>don&apos;t seem to show any patterns at all</>
       <>can&apos;t be separated by a line</>
       <><Emoji symbol='🤔' label='thinking face'/> Well, the teal ones do seem to be in the middle and the tomato ones near the edges.</>

@@ -25,7 +25,7 @@ const MachineLearning = props => {
       </Flex>
       <p>The best we can do is roughly 1.373, so if you managed to get there, great job!</p>
       <p>Incidentally, one way to get there without having to rely on luck is to adjust one handle at a time: we move one of the two ends up and down to get the orange area as low as possible. Then we drag the other dot to get the area even lower. Then back to the first dot, and so on, back and forth. Pretty soon we&apos;ll get it to a point where the orange area isn&apos;t decreasing anymore, and then we can declare victory!</p>
-      <p>Let&apos;s try it again, this time on a 3D plane instead of 2D. Drag the sliders on the left side to transform the gray plane, and see how small you can get the orange area!</p>
+      <p>Let&apos;s try it again, this time on a 3D plane instead of 2D. You can drag on the window to change your view, and drag the sliders on the left side to transform the gray plane, and see how small you can get the orange area!</p>
       <Box m='auto' w='95%'>
         <Graph3D dehydrated={graphs.volumemin} drawer aspectRatio={16 / 9}/>
       </Box>

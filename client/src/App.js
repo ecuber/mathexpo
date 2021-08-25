@@ -12,7 +12,6 @@ import {
   Closing,
   LearningFromData
 } from './content'
-import { Graph2D } from './components/graphs'
 
 const ContainerBreakpoints = ['100%', 'container.lg']
 
