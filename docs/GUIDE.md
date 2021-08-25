@@ -13,6 +13,109 @@ The [original project]([https://github.com/ecuber/mathexpo](https://github.com/e
 - `chakra-ui` for themeable, accessible, and design system agnostic UI components
     - Also uses `@emotion/styled` for styling components with specific use-cases
 
+
+## Using the Primitives
+
+The "primitive" components included in this project make it really easy to throw together a beautiful math blog post, trusting that the content will be readable, responsive, and clean. Here are some examples of the ones you'll probably use most.
+
+### Intro to Chakra
+
+Many of the primitives rely on [ `chakra-ui`]([https://chakra-ui.com/](https://chakra-ui.com/)), an awesome UI library that has most enjoyable developer experience of anything I've ever tried. It has all the great features of Tailwind CSS or Bootstrap packaged into React components with intuitive prop names and amazing theming. While you don't necessarily need to touch Chakra yourself, if you need to change any of my components for any reason, here's a quick overview of some of the features I used.
+
+#### Common Props
+
+Keep in mind that (almost) all the styling props available on every Chakra component map to a regular CSS properties. You *can* treat them just the same way you would if you added a `style` prop to a div in React (all the names are the same!). However, we also get some nice ways to handle responsiveness that are good to know about.
+
+|Name             |CSS Property                                                     |Examples                            |Notes                                                                   |
+|-----------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------|
+|m, ml, mt, mr, mb|margin, margin-left, margin-top, margin-right, margin-bottom     |m='auto' mr='10px' margin={25}      |numbers (pixels) or strings work                                        |
+|p, pl, pt, pr, pb|padding, padding-left, padding-top, padding-right, padding-bottom|p='15px' pl='0.9rem' paddingTop={15}|                                                                        |
+|mx/px            |margin-left and margin-right/padding-left or padding-right       |mx='auto' px='1rem'                 |will set both left and right margins/padding respectively               |
+|my/py            |margin-top and margin-bottom/padding-top or padding-bottom       |my='2rem' py='1rem'                 |will set both top and bottom margins/padding respectively               |
+|display          |display                                                          |display='inline-block'              |'flex', 'block', etc.                                                   |
+|size             |font size, width, height                                         |size='xl' size='md' size='2xl'      |a Button or Heading component will react differently to different sizes.|
+|w                |width                                                            |w='100%' width='400px'              |                                                                        |
+
+
+#### Responsive Props
+
+One of the most handy and intuitive features Chakra offers is the ability to set responsive styling based on the screen size. Here's an example:
+
+```jsx
+// import { Image } from '@chakra-ui/react'
+<Image
+	alt='x y plane with with the point (2, 3) plotted on it'
+	loading='lazy'
+	w={{ base: '90%', sm: '70%', md: '50%' }}
+	maxW={300}
+	m='auto'
+	mb='10'
+	src='/assets/plane.svg'
+/>
+```
+
+There's a couple different syntaxes that work for this, but notice that you can set multiple width's right in the `w` prop for different screen sizes. Check out the [Chakra documentation]([https://chakra-ui.com/docs/features/responsive-styles](https://chakra-ui.com/docs/features/responsive-styles)) for more on this.
+
+### Quizzes
+
+#### `Quiz`
+
+The array of the `Quiz`'s child elements is split into 2 halves. The first will be rendered as clickable **answer choices**, and the second contains the **responses** that can appear after the reader makes a choice. See the example below to see how that works. 
+
+The `Quiz` component will leave space below the answer choices that is large enough to hold the response that corresponds with the answer they click. By default, this space will be as tall as the first response element (index `0` of the array of **responses**), but you can change that index via the `placeholder` holder prop. I recommend picking the correct response index as your placeholder, that way the page won't have to shift if the user picks the correct answer.
+
+#### `Emoji`
+
+One (optional) nice way to use the quiz component is to use emojis in the responses so the user gets quick visual feedback as to whether they were right or not. Use the `Emoji` component to automatically wrap emojis in a `<span>` and add an accessible `aria-label` to accommodate screen readers.
+
+#### Example
+
+```jsx
+import React from 'react'
+import { Quiz, Emoji } from './components/layout'
+
+const App = props => (
+	<div>
+		<Quiz placeholder={0}>
+			<>true</>
+			<>false</>
+			<><Emoji symbol='✅' label='green check mark'/> Exactly, great job!</> {/* Corresponds with true */}
+			<><Emoji symbol='🤔' label='thinking face'/> Hmm, think again.</> {/* Corresponds with false */}
+		</Quiz>
+	</div>
+	// If the user clicks `true` it will render a box containing `✅ Exactly, great job!`
+	// If the user clicks `false` it will render a box containing `🤔 Hmm, think again.`
+)
+```
+
+#### Result
+
+![quiz.gif](./quiz.gif)
+
+### Float
+
+One of the most useful responsive layout tricks is using the `float: right` or `float: left` CSS properties. To avoid needing to use CSS classes, I've implemented a `Float` component that is pretty nifty. Set the `dir` prop to `'right'` or `'left'` to float the div to the right or left, respectively.
+
+```jsx
+// src/app.js
+import React from 'react'
+import { Float } from './components/layout'
+
+const App = props => (
+	<div>some content before</div>
+	<Float dir='right'>
+		<Image src='./path/to/img.jpg'/>
+	</Float>
+	<div>some content after</div>
+)
+```
+
+## Changing the Theme
+
+You can change the Chakra theme quickly by simply editing `src/utils/theme.js`. See [the documentation](https://chakra-ui.com/docs/theming/customize-theme) for more info.
+
+To update base styles, you'll want to edit `src/index.css`-- everything should work just the same as doing it in Chakra or emotion styled components.
+
 ### Using JSXGraph
 
 The JSXGraph component provides flexible options for "coding" your graphs. Their API is [thoroughly documented here]([https://jsxgraph.org/](https://jsxgraph.org/)).
@@ -394,105 +497,3 @@ export default App
 ```
 
 **Notice that in this example, we don't have a `dehydrated` prop set yet.** If you're developing a new graph, I recommend immediately saving the initial scene before making any edits. Then, add the reference to the dehydrated graph in the code. That way, you can continuously save the graph as you make edits and any accidental reloads will keep rendering the latest version of the graph.
-
-## Using Primitives
-
-The "primitive" components included in this project make it really easy to throw together a beautiful math blog post, trusting that the content will be readable, responsive, and clean. Here are some examples of the ones you'll probably use most.
-
-### Intro to Chakra
-
-Many of the primitives rely on [ `chakra-ui`]([https://chakra-ui.com/](https://chakra-ui.com/)), an awesome UI library that has most enjoyable developer experience of anything I've ever tried. It has all the great features of Tailwind CSS or Bootstrap packaged into React components with intuitive prop names and amazing theming. While you don't necessarily need to touch Chakra yourself, if you need to change any of my components for any reason, here's a quick overview of some of the features I used.
-
-#### Common Props
-
-Keep in mind that (almost) all the styling props available on every Chakra component map to a regular CSS properties. You *can* treat them just the same way you would if you added a `style` prop to a div in React (all the names are the same!). However, we also get some nice ways to handle responsiveness that are good to know about.
-
-|Name             |CSS Property                                                     |Examples                            |Notes                                                                   |
-|-----------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------|
-|m, ml, mt, mr, mb|margin, margin-left, margin-top, margin-right, margin-bottom     |m='auto' mr='10px' margin={25}      |numbers (pixels) or strings work                                        |
-|p, pl, pt, pr, pb|padding, padding-left, padding-top, padding-right, padding-bottom|p='15px' pl='0.9rem' paddingTop={15}|                                                                        |
-|mx/px            |margin-left and margin-right/padding-left or padding-right       |mx='auto' px='1rem'                 |will set both left and right margins/padding respectively               |
-|my/py            |margin-top and margin-bottom/padding-top or padding-bottom       |my='2rem' py='1rem'                 |will set both top and bottom margins/padding respectively               |
-|display          |display                                                          |display='inline-block'              |'flex', 'block', etc.                                                   |
-|size             |font size, width, height                                         |size='xl' size='md' size='2xl'      |a Button or Heading component will react differently to different sizes.|
-|w                |width                                                            |w='100%' width='400px'              |                                                                        |
-
-
-#### Responsive Props
-
-One of the most handy and intuitive features Chakra offers is the ability to set responsive styling based on the screen size. Here's an example:
-
-```jsx
-// import { Image } from '@chakra-ui/react'
-<Image
-	alt='x y plane with with the point (2, 3) plotted on it'
-	loading='lazy'
-	w={{ base: '90%', sm: '70%', md: '50%' }}
-	maxW={300}
-	m='auto'
-	mb='10'
-	src='/assets/plane.svg'
-/>
-```
-
-There's a couple different syntaxes that work for this, but notice that you can set multiple width's right in the `w` prop for different screen sizes. Check out the [Chakra documentation]([https://chakra-ui.com/docs/features/responsive-styles](https://chakra-ui.com/docs/features/responsive-styles)) for more on this.
-
-### Quizzes
-
-#### `Quiz`
-
-The array of the `Quiz`'s child elements is split into 2 halves. The first will be rendered as clickable **answer choices**, and the second contains the **responses** that can appear after the reader makes a choice. See the example below to see how that works. 
-
-The `Quiz` component will leave space below the answer choices that is large enough to hold the response that corresponds with the answer they click. By default, this space will be as tall as the first response element (index `0` of the array of **responses**), but you can change that index via the `placeholder` holder prop. I recommend picking the correct response index as your placeholder, that way the page won't have to shift if the user picks the correct answer.
-
-#### `Emoji`
-
-One (optional) nice way to use the quiz component is to use emojis in the responses so the user gets quick visual feedback as to whether they were right or not. Use the `Emoji` component to automatically wrap emojis in a `<span>` and add an accessible `aria-label` to accommodate screen readers.
-
-#### Example
-
-```jsx
-import React from 'react'
-import { Quiz, Emoji } from './components/layout'
-
-const App = props => (
-	<div>
-		<Quiz placeholder={0}>
-			<>true</>
-			<>false</>
-			<><Emoji symbol='✅' label='green check mark'/> Exactly, great job!</> {/* Corresponds with true */}
-			<><Emoji symbol='🤔' label='thinking face'/> Hmm, think again.</> {/* Corresponds with false */}
-		</Quiz>
-	</div>
-	// If the user clicks `true` it will render a box containing `✅ Exactly, great job!`
-	// If the user clicks `false` it will render a box containing `🤔 Hmm, think again.`
-)
-```
-
-#### Result
-
-![quiz.gif](./quiz.gif)
-
-### Float
-
-One of the most useful responsive layout tricks is using the `float: right` or `float: left` CSS properties. To avoid needing to use CSS classes, I've implemented a `Float` component that is pretty nifty. Set the `dir` prop to `'right'` or `'left'` to float the div to the right or left, respectively.
-
-```jsx
-// src/app.js
-import React from 'react'
-import { Float } from './components/layout'
-
-const App = props => (
-	<div>some content before</div>
-	<Float dir='right'>
-		<Image src='./path/to/img.jpg'/>
-	</Float>
-	<div>some content after</div>
-)
-```
-
-## Changing the Theme
-
-You can change the Chakra theme quickly by simply editing `src/utils/theme.js`. See [the documentation](https://chakra-ui.com/docs/theming/customize-theme) for more info.
-
-To update base styles, you'll want to edit `src/index.css`-- everything should work just the same as doing it in Chakra or emotion styled components.
