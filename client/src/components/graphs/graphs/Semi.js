@@ -161,7 +161,7 @@ const Semi = props => {
     setRerenders(rerenders + 1)
   }, [props.rerender])
 
-  return <Graph2D key={rerenders} logic={logic} aspectRatio={0.55}/>
+  return <Graph2D jessieCode key={rerenders} logic={logic} aspectRatio={0.55}/>
 }
 
 Semi.propTypes = {

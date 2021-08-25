@@ -126,7 +126,7 @@ const TwoPixel = props => {
     setRerenders(rerenders + 1)
   }, [props.diagonal])
 
-  return <Graph2D key={rerenders} logic={props.diagonal ? diagonal : initial} aspectRatio={0.636}/>
+  return <Graph2D jessieCode key={rerenders} logic={props.diagonal ? diagonal : initial} aspectRatio={0.636}/>
 }
 
 TwoPixel.propTypes = {

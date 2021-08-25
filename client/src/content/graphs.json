@@ -583,5 +583,72 @@
       "3": 0.88,
       "4": -0.44
     }
+  },
+  "mO1QsICp": {
+    "metadata": {
+      "id": "mO1QsICp",
+      "title": "A Cool Title Might Go Here But Its Invisible In Prod"
+    },
+    "sortableTree": {
+      "18": [
+        "19",
+        "20"
+      ],
+      "root": [
+        "mainFolder",
+        "18"
+      ],
+      "mainFolder": [
+        "16",
+        "17"
+      ]
+    },
+    "folders": {
+      "18": {
+        "description": "Folder 2"
+      },
+      "mainFolder": {
+        "description": "Folder 1"
+      }
+    },
+    "mathSymbols": {
+      "16": {
+        "type": "VARIABLE",
+        "name": "f(x,\\ y)",
+        "value": "x^2-y^2+2"
+      },
+      "20": {
+        "type": "VARIABLE_SLIDER",
+        "name": "t",
+        "isAnimating": true
+      }
+    },
+    "mathGraphics": {
+      "17": {
+        "type": "EXPLICIT_SURFACE",
+        "color": "#2ecc71",
+        "expr": "_f(x,y)=f\\left(x,\\ y\\right)"
+      },
+      "19": {
+        "type": "POINT",
+        "coords": "\\left[t,0,f\\left(t,\\ 0\\right)\\right]"
+      },
+      "camera": {
+        "type": "CAMERA",
+        "relativePosition": [
+          0.7990185465207001,
+          -1.6724537671141628,
+          1.0317304682820954
+        ],
+        "relativeLookAt": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "sliderValues": {
+      "20": 1.708333333333335
+    }
   }
 }

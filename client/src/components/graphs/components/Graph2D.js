@@ -25,7 +25,7 @@ function Graph2D (props) {
   return (
     <JSXGraph
       key={forceRerender}
-      jessieCode
+      jessieCode={props.jessieCode}
       logic={props.logic}
       boardAttributes={{
         showCopyright: false,
@@ -46,7 +46,8 @@ function Graph2D (props) {
 
 Graph2D.propTypes = {
   aspectRatio: PropTypes.number,
-  logic: PropTypes.string
+  logic: PropTypes.string,
+  jessieCode: PropTypes.bool
 }
 
 export default Graph2D

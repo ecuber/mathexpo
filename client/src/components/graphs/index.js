@@ -8,6 +8,7 @@ import Semi from './graphs/Semi'
 import Folding from './graphs/Folding'
 import Graph3D from './components/Graph3D'
 import Plot from './graphs/Plot'
+import Graph2D from './components/Graph2D'
 
 export {
   Optimize2D,
@@ -19,5 +20,6 @@ export {
   Semi,
   Folding,
   Graph3D,
-  Plot
+  Plot,
+  Graph2D
 }

@@ -20,5 +20,8 @@ The site is hosted at http://beautifuldatascience.com.
 * <b>`/client/`</b> - contains the create-react-app setup; client side code that renders the website.
 * <b>`/dev-server/`</b> - contains the Node.js web server that runs in parallel with the CRA dev server while creating new Math3D graphs. This allows the Math3D scenes to be saved to a JSON file, forgoing the need for a database.
 
+## Hey, this is neat. I want to make one!
+If you'd like to make a math blog like this one, you can clone the repository and look at the [GUIDE.md](https://github.com/ecuber/mathexpo/blob/master/docs/GUIDE.md) for more information on the components and getting started.
+
 ## License
 This project is distrubuted under the [MIT License](https://choosealicense.com/licenses/mit/).

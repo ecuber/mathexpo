@@ -36,6 +36,6 @@ point(0.7, 0.1) pts, c2;
 point(0.8, 0.9) pts, c2;
 point(0.1, 0.1) pts, c2;
 `
-const ScatterNN = props => <Graph2D logic={logic} aspectRatio={1}/>
+const ScatterNN = props => <Graph2D jessieCode logic={logic} aspectRatio={1}/>
 
 export default ScatterNN

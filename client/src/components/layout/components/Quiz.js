@@ -35,9 +35,11 @@ const Quiz = props => {
             {option}
         </Button>
       })}
-    <InfoBlock style={{ visibility: selection === -1 ? 'hidden' : 'visible' }}>
-      {props.children.slice(midSlice)[selection !== -1 ? selection : props.placeholder ?? 0]}
-    </InfoBlock>
+    </Center>
+    <Center>
+      <InfoBlock style={{ width: 'fit-content', whiteSpace: 'break-spaces', visibility: selection === -1 ? 'hidden' : 'visible' }}>
+        {props.children.slice(midSlice)[selection !== -1 ? selection : props.placeholder ?? 0]}
+      </InfoBlock>
     </Center>
   </Box>
 }
