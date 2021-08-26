@@ -12,6 +12,7 @@ The [original project]([https://github.com/ecuber/mathexpo](https://github.com/e
 - `plotly.js` for more granular control over 3D graphs
 - `chakra-ui` for themeable, accessible, and design system agnostic UI components
     - Also uses `@emotion/styled` for styling components with specific use-cases
+- [`MathLive`](https://cortexjs.io/mathlive/) for both static TeX rendering and math input
 
 
 ## Using the Primitives
@@ -56,6 +57,44 @@ One of the most handy and intuitive features Chakra offers is the ability to set
 
 There's a couple different syntaxes that work for this, but notice that you can set multiple width's right in the `w` prop for different screen sizes. Check out the [Chakra documentation]([https://chakra-ui.com/docs/features/responsive-styles](https://chakra-ui.com/docs/features/responsive-styles)) for more on this.
 
+### Rendering Equations
+Instead of traditional MathJax or MathQuill, this project uses the newer [MathLive](https://cortexjs.io/mathlive/) package which offers some cool functionality like a built-in virtual keyboard for mobile and lightweight components.
+
+This project has two implementations of MathLive, one for rendering static equations and the other for accepting math input. We're using [a React wrapper](https://github.com/ShaMan123/react-math-view) that turns all the configuration options into lovely typed component props that are pretty intuitive to figure out.
+
+#### `StaticEq`
+This component is used for rendering a static math equation, available both inline and in `display: block`. Here's a couple examples:
+
+```jsx
+import { StaticEq } from './components/layout'
+
+{/* block equation */}
+<StaticEq value='a^2+b^2=c^2'>
+
+{/* inline equation */}
+<p>The Pythagorean Theorem is <StaticEq inline value='a^2+b^2=c^2'></p>
+```
+
+#### `MathField`
+The editable math field supports passing an onChange function so you can run whatever logic you need to in order to validate it. The `MathField` behaves differently from `StaticEq` in that there isn't a `value`; instead `defaultValue` represents the initial value to be rendered. **Value state is handled in the MathField component.** Use onChange to update a state value you will validate later.
+
+Note that the virtual keyboard should appear automatically when a touch-enabled-device user focuses on the element.
+
+```jsx
+import { MathField } from './components/layout'
+
+const Ex = props => {
+	const [value, setValue] = useState('')
+	return <>
+		<MathField defaultValue='d=\sqrt[]{x^2+y^2}' onChange={e => {
+			setValue(e.currentTarget.getValue())
+		}}/>
+		<p>{value}</p>
+	</>
+}
+
+```
+
 ### Quizzes
 
 #### `Quiz`
@@ -79,8 +118,8 @@ const App = props => (
 		<Quiz placeholder={0}>
 			<>true</>
 			<>false</>
-			<><Emoji symbol='✅' label='green check mark'/> Exactly, great job!</> {/* Corresponds with true */}
-			<><Emoji symbol='🤔' label='thinking face'/> Hmm, think again.</> {/* Corresponds with false */}
+			<><Emoji symbol='✅' label='green check mark'/> Exactly, great job!</>
+			<><Emoji symbol='🤔' label='thinking face'/> Hmm, think again.</>
 		</Quiz>
 	</div>
 	// If the user clicks `true` it will render a box containing `✅ Exactly, great job!`
