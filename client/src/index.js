@@ -10,9 +10,6 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { ChakraProvider } from '@chakra-ui/react'
 import theme from './utils/theme'
-import { addStyles } from 'react-mathquill'
-
-addStyles()
 
 ReactDOM.render(
   <React.StrictMode>
