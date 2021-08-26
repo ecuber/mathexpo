@@ -18,6 +18,7 @@ const Float = props => (
     base: 4,
     lg: 5
   }}
+  ml={props.dir === 'left' ? 0 : ''}
   mb={3}
   {...props}
   >
