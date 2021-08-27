@@ -7,7 +7,7 @@ import ScatterNN from './graphs/ScatterNN'
 import Semi from './graphs/Semi'
 import Folding from './graphs/Folding'
 import Graph3D from './components/Graph3D'
-import Plot from './graphs/Plot'
+import Plot from './components/Plot'
 import Graph2D from './components/Graph2D'
 
 export {

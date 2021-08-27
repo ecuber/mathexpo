@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { data, layout, config } from '../../../content/plotly.json'
+import PropTypes from 'prop-types'
 import Plotly from 'react-plotly.js'
 import { Box } from '@chakra-ui/layout'
 // import { Placeholder } from '../../layout'
@@ -9,6 +9,7 @@ import { Box } from '@chakra-ui/layout'
 const Plot = props => {
   // return <Suspense fallback={<Placeholder/>}>
   /* </Suspense> */
+  const { data, layout, config } = props
 
   const [forceRerender, setForceRerender] = useState(1)
 
@@ -28,9 +29,21 @@ const Plot = props => {
     }
   }, [window.innerWidth])
 
-  return <Box key={forceRerender} w='100%' m='auto'>
+  return <Box
+    key={forceRerender}
+    w='100%'
+    m='auto'
+    // pass aditional style props to Box
+    {...{ ...props, data: undefined, layout: undefined, config: undefined }}
+    >
       <Plotly data={data} layout={layout} config={config} style={{ width: '100%', margin: 'auto' }}/>
     </Box>
+}
+
+Plot.propTypes = {
+  data: PropTypes.any,
+  layout: PropTypes.any,
+  config: PropTypes.any
 }
 
 export default Plot

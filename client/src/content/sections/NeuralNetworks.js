@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Heading, Button, chakra, Center } from '@chakra-ui/react'
 import { Caption, Emoji, Float, Quiz } from '../../components/layout'
 import { ScatterNN, Folding, Semi, Plot } from '../../components/graphs'
+import { data, layout, config } from '../../content/plotly.json'
 
 const NeuralNetworks = props => {
   const [semi, setSemi] = useState(false)
@@ -53,7 +54,7 @@ const NeuralNetworks = props => {
         <li><strong><em>Reduced</em> flexibility</strong> in what the transformations can do.</li>
       </chakra.ol>
     </p>
-    <Plot/>
+    <Plot data={data} layout={layout} config={config}/>
     <br/>
     <br/>
     <p>Here&apos;s an example where our data points are in 3D space. We&apos;ll use a neural network with several dense layers with ReLU activation. Some of the layers use more than three dimensions, so isn&apos;t possible to visualize each transformation as we did above. But we can still take a look at the surface the model uses to predict: teal on one side, tomato on the other.</p>
