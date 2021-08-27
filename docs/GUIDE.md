@@ -9,7 +9,7 @@ The [original project]([https://github.com/ecuber/mathexpo](https://github.com/e
 - `math3d-component` for easy drop-in 3D graph creation
     - (Fairly) intuitive drag-and-drop UI
     - Flexible scene-saving mechanism
-- `plotly.js` for more granular control over 3D graphs
+- `plotly.js` for more flexible kinds of graphs
 - `chakra-ui` for themeable, accessible, and design system agnostic UI components
     - Also uses `@emotion/styled` for styling components with specific use-cases
 - [`MathLive`](https://cortexjs.io/mathlive/) for both static TeX rendering and math input
@@ -539,3 +539,17 @@ export default App
 ```
 
 **Notice that in this example, we don't have a `dehydrated` prop set yet.** If you're developing a new graph, I recommend immediately saving the initial scene before making any edits. Then, add the reference to the dehydrated graph in the code. That way, you can continuously save the graph as you make edits and any accidental reloads will keep rendering the latest version of the graph.
+
+## Plotly Graphs
+To implement Plotly, this project just uses the official [Plotly React Wrapper](https://plotly.com/javascript/react/) which makes it really easy to drop in a graph. Check out their documentation for more info on using the component. 
+
+If you'd like an easy way to create a Plotly plot, feel free to use [Plotly Chart Studio](https://chart-studio.plotly.com/create/). Then, copy the data from the JSON menu (in the dropdown menu on the left) and add it to the appropriate prop in the `Plot` component.
+
+Some basic styles and window size event listeners have been implemented in my `Plot` component which can be found in `src/components/graphs/components/Plot.js`. Here's an example implementation. **Note that the Plot is wrapped in a Chakra `Box`. You can therefore pass a `style` prop or any of the supported Chakra props and they will apply to the container surrounding the Plot.**
+
+```jsx
+import { Plot } from './compnents/graphs'
+import { data, layout, config } from './content/plotly.json'
+
+<Plot marginY='2rem' data={data} layout={layout} config={config}/>
+```
