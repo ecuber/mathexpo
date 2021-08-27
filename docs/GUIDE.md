@@ -45,15 +45,22 @@ One of the most handy and intuitive features Chakra offers is the ability to set
 ```jsx
 // import { Image } from '@chakra-ui/react'
 <Image
-	alt='x y plane with with the point (2, 3) plotted on it'
-	loading='lazy'
-	w={{ base: '90%', sm: '70%', md: '50%' }}
-	maxW={300}
-	m='auto'
-	mb='10'
-	src='/assets/plane.svg'
+  alt='x y plane with with the point (2, 3) plotted on it'
+  loading='lazy'
+  w={{ base: '90%', sm: '70%', md: '50%' }}
+  maxW={300}
+  m='auto'
+  mb='10'
+  src='/assets/plane.svg'
 />
 ```
+
+#### Changing the Theme
+
+You can change the Chakra theme quickly by simply editing `src/utils/theme.js`. See [the documentation](https://chakra-ui.com/docs/theming/customize-theme) for more info.
+
+To update base styles, you'll want to edit `src/index.css`-- everything should work just the same as doing it in Chakra or emotion styled components.
+
 
 There's a couple different syntaxes that work for this, but notice that you can set multiple width's right in the `w` prop for different screen sizes. Check out the [Chakra documentation]([https://chakra-ui.com/docs/features/responsive-styles](https://chakra-ui.com/docs/features/responsive-styles)) for more on this.
 
@@ -84,13 +91,13 @@ Note that the virtual keyboard should appear automatically when a touch-enabled-
 import { MathField } from './components/layout'
 
 const Ex = props => {
-	const [value, setValue] = useState('')
-	return <>
-		<MathField defaultValue='d=\sqrt[]{x^2+y^2}' onChange={e => {
-			setValue(e.currentTarget.getValue())
-		}}/>
-		<p>{value}</p>
-	</>
+  const [value, setValue] = useState('')
+  return <>
+    <MathField defaultValue='d=\sqrt[]{x^2+y^2}' onChange={e => {
+      setValue(e.currentTarget.getValue())
+    }}/>
+    <p>{value}</p>
+  </>
 }
 
 ```
@@ -114,16 +121,16 @@ import React from 'react'
 import { Quiz, Emoji } from './components/layout'
 
 const App = props => (
-	<div>
-		<Quiz placeholder={0}>
-			<>true</>
-			<>false</>
-			<><Emoji symbol='✅' label='green check mark'/> Exactly, great job!</>
-			<><Emoji symbol='🤔' label='thinking face'/> Hmm, think again.</>
-		</Quiz>
-	</div>
-	// If the user clicks `true` it will render a box containing `✅ Exactly, great job!`
-	// If the user clicks `false` it will render a box containing `🤔 Hmm, think again.`
+  <div>
+    <Quiz placeholder={0}>
+      <>true</>
+      <>false</>
+      <><Emoji symbol='✅' label='green check mark'/> Exactly, great job!</>
+      <><Emoji symbol='🤔' label='thinking face'/> Hmm, think again.</>
+    </Quiz>
+  </div>
+  // If the user clicks `true` it will render a box containing `✅ Exactly, great job!`
+  // If the user clicks `false` it will render a box containing `🤔 Hmm, think again.`
 )
 ```
 
@@ -141,19 +148,15 @@ import React from 'react'
 import { Float } from './components/layout'
 
 const App = props => (
-	<div>some content before</div>
-	<Float dir='right'>
-		<Image src='./path/to/img.jpg'/>
-	</Float>
-	<div>some content after</div>
+  <>
+    <div>some content before</div>
+    <Float dir='right'>
+      <Image src='./path/to/img.jpg'/>
+    </Float>
+    <div>some content after</div>
+  </>
 )
 ```
-
-## Changing the Theme
-
-You can change the Chakra theme quickly by simply editing `src/utils/theme.js`. See [the documentation](https://chakra-ui.com/docs/theming/customize-theme) for more info.
-
-To update base styles, you'll want to edit `src/index.css`-- everything should work just the same as doing it in Chakra or emotion styled components.
 
 ### Using JSXGraph
 
@@ -182,10 +185,10 @@ axis(origin, east) <<id: 'xaxis', ticks: <<minorHeight: 5, majorHeight: 12, draw
 axis(origin, north) <<id: 'yaxis', ticks: <<minorHeight: 5, majorHeight: 12, drawZero: false, label: <<anchorY: 'middle', offset: [14, 0]>>>>>>;
                             
 pts = <<color: '#DDD',
-        withLabel: false,
-        strokeWidth: 2,
-        strokeOpacity: 0.5,
-        fixed: true>>;
+  withLabel: false,
+  strokeWidth: 2,
+  strokeOpacity: 0.5,
+  fixed: true>>;
 
 c1 = <<color: 'teal'>>;
 c2 = <<color: 'tomato'>>;
@@ -219,8 +222,8 @@ import { Graph2D } from './components/graphs'
 // To see methods and properties available on the brd1 object, see its
 // type definition here: https://jsxgraph.uni-bayreuth.de/docs/symbols/JXG.Board.html
 const logic = brd1 => {
-	// function code from https://www.npmjs.com/package/@sswatson/jsxgraph-react-js
-	brd.suspendUpdate();
+  // function code from https://www.npmjs.com/package/@sswatson/jsxgraph-react-js
+  brd.suspendUpdate();
   var a = brd.create('slider', [[2, 8], [6, 8], [0, 3, 6]], { name: 'a' });
   var b = brd.create('slider', [[2, 7], [6, 7], [0, 2, 6]], { name: 'b' });
   var A = brd.create('slider', [[2, 6], [6, 6], [0, 3, 6]], { name: 'A' });
@@ -262,22 +265,22 @@ const solutionLogic = `
 // Otherwise, render intialLogic.
 
 const App = props => {
-	const [rerenders, setRerenders] = useState(0)
-	// Side-effect hook runs every rerender when props.solution changes.
+  const [rerenders, setRerenders] = useState(0)
+  // Side-effect hook runs every rerender when props.solution changes.
   useEffect(() => {
     setRerenders(rerenders + 1)
-  }, [props.solution])
-	
-	<Graph2D
-		key={rerenders}
-		jessieCode
-		logic={props.solution ? solutionLogic : initialLogic}
-		aspectRatio={1}
-	/>
+  }, [props.solution])  
+
+  <Graph2D
+    key={rerenders}
+    jessieCode
+    logic={props.solution ? solutionLogic : initialLogic}
+    aspectRatio={1}
+  />
 }
 
 App.propTypes = {
-	solution: PropTypes.bool
+  solution: PropTypes.bool
 }
 
 export default App
