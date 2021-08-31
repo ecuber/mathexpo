@@ -459,7 +459,7 @@ I'm fairly certain that the reason we have this setup is so that the underlying 
 
 The most important thing to notice here is that all of the object keys are unique integers that are not necessarily in order (with the exception of `mainFolder` and `camera`, more on that in a moment). **If you're generating a scene with a script, you'll need to make sure that there are no repeated keys in any of these three objects.** 
 
-Another caveat to this structure is that the keys are not always chosen in a logical order. I exported this JSON after making the graph manually, and as you can see, there are far fewer than 21 children across the three parent objects, and yet the highest "index" is 20. If you are generating your own graph, this isn't a problem; as long as all the keys are strings and unique the sorting and rendering. **However, if you or the user creates a new math object in the UI at runtime, there is a chance it will break everything** by creating a new object with the same key as one that already exists (causing the JSON loader or whatever to throw a nasty error saying "there's two key 16's and I don't know why" and making the whole website go whitescreen). I haven't thoroughly tested it, but it does seem that not every kind of math object is the same, but Points definitely do trigger the whitescreen. I would imagine a bit of investigation on the component-side would reveal the problem pretty quickly.
+Another caveat to this structure is that the keys are not always chosen in a logical order. I exported this JSON after making the graph manually, and as you can see, there are far fewer than 21 children across the three parent objects, and yet the highest "index" is 20. If you are generating your own graph, this isn't a problem; as long as all the keys are strings and unique the sorting and rendering should work fine. **However, if you or the user creates a new math object in the UI at runtime, there is a chance it will break everything** by creating a new object with the same key as one that already exists (causing the JSON loader or whatever to throw a nasty error saying "there's two key 16's and I don't know why" and making the whole website go whitescreen). I haven't thoroughly tested it, but it does seem that not every kind of math object is the same, but Points definitely do trigger the whitescreen. I would imagine a bit of investigation on the component-side would reveal the problem pretty quickly.
 
 If you choose to programmatically generate a scene you'll either need to wrap the component in an ErrorBoundary just in case the user does make a new point or something, or investigate the logic for key-generation on the component-side and make it more predictable.
 
@@ -475,7 +475,7 @@ If you choose to programmatically generate a scene you'll either need to wrap th
 }
 ```
 
-Again, I'm not sure why it's like this, but the numeric values of all the sliders are stored separately from the slider object itself in the `mathSymbols` section. The key has to correspond with an existent object in `mathSymbols`.
+Again, I'm not sure why, but the numeric values of all the sliders are stored separately from the slider object itself in the `mathSymbols` section. The key has to correspond with an existent object in `mathSymbols`.
 
 ### Using the Component
 
